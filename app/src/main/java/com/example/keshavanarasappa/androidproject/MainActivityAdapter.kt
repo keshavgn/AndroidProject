@@ -11,7 +11,7 @@ import android.widget.TextView
  * Created by keshava.narasappa on 24/02/18.
  */
 class MainActivityAdapter internal constructor(private val context: Context, private val inflater: LayoutInflater) : BaseAdapter() {
-    private val mainList = arrayOf("Search")
+    private val mainList = arrayOf("Search", "RecylerView")
 
     init {
     }
@@ -45,7 +45,7 @@ class MainActivityAdapter internal constructor(private val context: Context, pri
 
         val rowTitle = getItem(position)
         holder.titleTextView?.text = rowTitle
-
+        holder.titleTextView?.minHeight = 50
         return convertView
     }
 

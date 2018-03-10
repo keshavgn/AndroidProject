@@ -5,7 +5,7 @@
 
     <!-- Displays keyboard when touched -->
     <EditText
-        android:id="@+id/main_edittext"
+        android:id="@+id/mainEdittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -14,7 +14,7 @@
 
     <!-- List whose dataset is defined in code with an adapter -->
     <TextView
-        android:id="@+id/main_textview"
+        android:id="@+id/mainTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -26,28 +26,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Set OnClickListener
-        to trigger results when pressed -->
+        <!-- Set OnClickListener to trigger results when pressed -->
         <Button
-            android:id="@+id/main_button"
+            android:id="@+id/mainButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="@string/button" />
 
-        <!-- Shows an image from your drawable resources -->
-
-        <!-- Closing tag for the horizontal nested layout -->
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/main_listview"
+
+    <GridView
+        android:id="@+id/mainGridview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1" />
-
-    <!-- This nested layout contains views of its own -->
+        android:columnWidth="100dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="spacingWidthUniform"
+        android:verticalSpacing="24dp" />
 
 </LinearLayout>

@@ -9,5 +9,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
         android:paddingLeft="20dp" />
 </LinearLayout>

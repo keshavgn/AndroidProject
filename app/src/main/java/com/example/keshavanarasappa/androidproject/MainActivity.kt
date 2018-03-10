@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         if (position == 0) {
             val searchIntent = Intent(this, SearchActivity::class.java)
             startActivity(searchIntent)
+        } else if (position == 1) {
+            val recyclerIntent = Intent(this, RecyclerActivity::class.java)
+            startActivity(recyclerIntent)
         }
     }
 }

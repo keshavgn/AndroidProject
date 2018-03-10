@@ -5,48 +5,63 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v4.view.MenuItemCompat
+import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.ShareActionProvider
 import android.util.Log
 import android.view.Menu
 import android.view.View
-import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.JsonHttpResponseHandler
+import kotlinx.android.synthetic.main.search_activity.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
+import java.io.Serializable
+import android.arch.lifecycle.Observer
 
 /**
  * Created by keshava.narasappa on 24/02/18.
  */
 class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnItemClickListener  {
-    internal lateinit var mainTextView: TextView
-    internal lateinit var mainButton: Button
-    internal lateinit var mainEditText: EditText
-    internal lateinit var mainListView: ListView
-    internal lateinit var jsonAdapter: JSONAdapter
+
+    internal lateinit var jsonAdapterGrid: JSONAdapter
     internal lateinit var shareActionProvider: ShareActionProvider
     internal lateinit var sharedPreferences: SharedPreferences
+    internal lateinit var viewModel: SearchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.search_activity)
 
-        mainTextView = findViewById<View>(R.id.main_textview) as TextView
-        mainButton = findViewById<View>(R.id.main_button) as Button
         mainButton.setOnClickListener(this)
 
-        mainEditText = findViewById<View>(R.id.main_edittext) as EditText
+        jsonAdapterGrid = JSONAdapter(this, layoutInflater)
+        mainGridview.onItemClickListener = this
+        mainGridview.adapter = jsonAdapterGrid
 
-        mainListView = findViewById<View>(R.id.main_listview) as ListView
-        mainListView.onItemClickListener = this
-        jsonAdapter = JSONAdapter(this, layoutInflater)
-        mainListView.adapter = jsonAdapter
+        viewModel = SearchViewModel.create(this)
+        val data = viewModel.getSearchResults()
+
+        viewModel.getSearchResults().observe(this, Observer<Resource<JSONArray>> { searchResults ->
+            if (searchResults != null) {
+                when (searchResults.status) {
+                    Resource.Status.SUCCESS -> {
+
+                        jsonAdapterGrid.updateData(searchResults.data!!)
+                        Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
+                    }
+                    Resource.Status.ERROR->{
+                        Toast.makeText(this, "Error: "+searchResults.exception?.message, Toast.LENGTH_LONG);
+                    }
+                }
+            }
+        })
+
 
         displayWelcome()
     }
@@ -86,8 +101,11 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
     }
 
     override fun onClick(v: View) {
+        searchBooks()
+    }
 
-        queryBooks(mainEditText.text.toString())
+    fun searchBooks() {
+        viewModel.queryBooks(mainEdittext.text.toString())
 
         val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
@@ -95,7 +113,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
-        val coverID = jsonAdapter.getItem(position).optString("cover_i", "")
+        val coverID = jsonAdapterGrid.getItem(position).optString("cover_i", "")
 
         val detailIntent = Intent(this, DetailActivity::class.java)
 
@@ -106,64 +124,12 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.main, menu)
-
-        val shareItem = menu.findItem(R.id.menu_item_share)
-
-        if (shareItem != null) {
-            shareActionProvider = MenuItemCompat.getActionProvider(shareItem) as ShareActionProvider
-        }
-
-        setShareIntent()
-
         return true
-    }
-
-    private fun setShareIntent() {
-
-        val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Android Development")
-        shareIntent.putExtra(Intent.EXTRA_TEXT, mainTextView.text)
-
-        shareActionProvider.setShareIntent(shareIntent)
-    }
-
-    private fun queryBooks(searchString: String) {
-
-        var urlString = ""
-        try {
-            urlString = URLEncoder.encode(searchString, "UTF-8")
-        } catch (e: UnsupportedEncodingException) {
-
-            e.printStackTrace()
-            Toast.makeText(this, "Error: " + e.message, Toast.LENGTH_LONG).show()
-        }
-
-        val client = AsyncHttpClient()
-
-        client.get(QUERY_URL + urlString, object : JsonHttpResponseHandler() {
-
-            override fun onSuccess(jsonObject: JSONObject?) {
-
-                Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
-
-                jsonAdapter.updateData(jsonObject!!.optJSONArray("docs"))
-            }
-
-            override fun onFailure(statusCode: Int, throwable: Throwable, error: JSONObject) {
-
-                Toast.makeText(applicationContext, "Error: " + statusCode + " "
-                        + throwable.message, Toast.LENGTH_LONG).show()
-
-                Log.e("omg android", statusCode.toString() + " " + throwable.message)
-            }
-        })
     }
 
     companion object {
 
         private val PREFS = "prefs"
         private val PREF_NAME = "name"
-        private val QUERY_URL = "http://openlibrary.org/search.json?q="
     }
 }
