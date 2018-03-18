@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Recycler
 
 import android.support.annotation.LayoutRes
 import android.view.LayoutInflater

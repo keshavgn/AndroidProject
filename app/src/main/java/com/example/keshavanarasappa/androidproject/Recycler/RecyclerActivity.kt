@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Recycler
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
+import com.example.keshavanarasappa.androidproject.R
 import kotlinx.android.synthetic.main.activity_recyler.*
 import java.io.IOException
 import java.util.*
@@ -93,6 +94,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
                 super.onScrollStateChanged(recyclerView, newState)
                 val totalItemCount = recyclerView!!.layoutManager.itemCount
                 if (!imageRequester.isLoadingData && totalItemCount == lastVisibleItemPosition + 1) {
+                    imageRequester.photosCount = 20
                     requestPhoto()
                 }
             }
@@ -101,15 +103,12 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
     private fun setRecyclerViewItemTouchListener() {
 
-        //1
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, viewHolder1: RecyclerView.ViewHolder): Boolean {
-                //2
                 return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-                //3
                 val position = viewHolder.adapterPosition
                 photosList.removeAt(position)
                 recyclerView.adapter.notifyItemRemoved(position)

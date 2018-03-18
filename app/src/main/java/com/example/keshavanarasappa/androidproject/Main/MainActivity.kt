@@ -2,7 +2,7 @@
  * Created by keshava.narasappa on 24/02/18.
  */
 
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Main
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
+import com.example.keshavanarasappa.androidproject.AdaptiveLayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
+import com.example.keshavanarasappa.androidproject.Search.SearchActivity
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
@@ -37,6 +41,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         } else if (position == 1) {
             val recyclerIntent = Intent(this, RecyclerActivity::class.java)
             startActivity(recyclerIntent)
+        } else if (position == 2) {
+            val adaptiveUIIntent = Intent(this, AdaptiveLayoutActivity::class.java)
+            startActivity(adaptiveUIIntent)
         }
     }
 }

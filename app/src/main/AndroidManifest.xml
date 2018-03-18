@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:label="@string/app_name"
+        <activity android:name=".Main.MainActivity" android:label="@string/app_name"
             android:launchMode="singleTop" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,36 +17,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".Search.SearchActivity"
             android:label="@string/activity_search"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".Main.MainActivity"/>
         </activity>
         <activity
-            android:name=".RecyclerActivity"
+            android:name=".Recycler.RecyclerActivity"
             android:label="@string/activity_recycler"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".Main.MainActivity"/>
         </activity>
         <activity
-            android:name=".PhotoActivity"
+            android:name=".Recycler.PhotoActivity"
             android:label="@string/activity_photos"
-            android:parentActivityName=".RecyclerActivity">
+            android:parentActivityName=".Recycler.RecyclerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RecyclerActivity"/>
+                android:value=".Recycler.RecyclerActivity"/>
         </activity>
         <activity
-            android:name=".DetailActivity"
+            android:name=".Search.DetailActivity"
             android:label="@string/activity_details"
-            android:parentActivityName=".SearchActivity">
+            android:parentActivityName=".Search.SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".Main.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".AdaptiveLayout.AdaptiveLayoutActivity"
+            android:label="@string/activity_adaptive"
+            android:parentActivityName=".Main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Main.MainActivity"/>
         </activity>
     </application>
 

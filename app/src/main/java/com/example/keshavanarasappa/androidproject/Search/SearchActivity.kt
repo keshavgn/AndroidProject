@@ -1,27 +1,20 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Search
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.ShareActionProvider
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.JsonHttpResponseHandler
 import kotlinx.android.synthetic.main.search_activity.*
 import org.json.JSONArray
-import org.json.JSONObject
-import java.io.UnsupportedEncodingException
-import java.net.URLEncoder
-import java.io.Serializable
 import android.arch.lifecycle.Observer
+import com.example.keshavanarasappa.androidproject.R
 
 /**
  * Created by keshava.narasappa on 24/02/18.
@@ -55,7 +48,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
                         jsonAdapterGrid.updateData(searchResults.data!!)
                         Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
                     }
-                    Resource.Status.ERROR->{
+                    Resource.Status.ERROR ->{
                         Toast.makeText(this, "Error: "+searchResults.exception?.message, Toast.LENGTH_LONG);
                     }
                 }

@@ -1,7 +1,8 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Recycler
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_photo.*
 
@@ -19,7 +20,6 @@ class PhotoActivity : AppCompatActivity() {
 
         selectedPhoto = intent.getSerializableExtra(PHOTO_KEY) as Photo
         Picasso.with(this).load(selectedPhoto?.url).into(photoImageView)
-//
         photoDescription?.text = selectedPhoto?.explanation
     }
 

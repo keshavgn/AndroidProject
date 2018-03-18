@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Search
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.support.v7.widget.ShareActionProvider
+import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 

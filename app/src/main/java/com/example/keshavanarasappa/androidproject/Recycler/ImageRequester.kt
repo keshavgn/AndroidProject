@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Recycler
 
 /**
  * Created by keshava.narasappa on 03/03/18.
@@ -6,6 +6,7 @@ package com.example.keshavanarasappa.androidproject
 import android.app.Activity
 import android.content.Context
 import android.net.Uri.Builder
+import com.example.keshavanarasappa.androidproject.R
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -24,6 +25,7 @@ class ImageRequester(listeningActivity: Activity) {
     private val responseListener: ImageRequesterResponse
     private val context: Context
     private val client: OkHttpClient
+    public var photosCount = 20
     var isLoadingData: Boolean = false
         private set
 
@@ -64,7 +66,12 @@ class ImageRequester(listeningActivity: Activity) {
                     if (photoJSON.getString(MEDIA_TYPE_KEY) != MEDIA_TYPE_VIDEO_VALUE) {
                         val receivedPhoto = Photo(photoJSON)
                         responseListener.receivedNewPhoto(receivedPhoto)
-                        isLoadingData = false
+                        if (photosCount == 0) {
+                            isLoadingData = false
+                        } else {
+                            getPhoto()
+                            photosCount = photosCount - 1
+                        }
                     } else {
                         getPhoto()
                     }

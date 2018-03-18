@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Main
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.keshavanarasappa.androidproject.R
 
 /**
  * Created by keshava.narasappa on 24/02/18.
  */
 class MainActivityAdapter internal constructor(private val context: Context, private val inflater: LayoutInflater) : BaseAdapter() {
-    private val mainList = arrayOf("Search", "RecylerView")
+    private val mainList = arrayOf("Search", "RecylerView", "Adaptive UI")
 
     init {
     }
@@ -33,7 +34,7 @@ class MainActivityAdapter internal constructor(private val context: Context, pri
 
         if (convertView == null) {
 
-            convertView = inflater.inflate(R.layout.row_main, null)
+            convertView = inflater.inflate(R.layout.row_main, parent, false)
 
             holder = ViewHolder()
             holder.titleTextView = convertView.findViewById<TextView>(R.id.text_title) as TextView

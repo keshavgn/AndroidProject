@@ -1,9 +1,9 @@
-package com.example.keshavanarasappa.androidproject
+package com.example.keshavanarasappa.androidproject.Recycler
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapter<RecyclerAdapter.PhotoHolder>() {
     override fun getItemCount() = photos.size
 
-    override fun onBindViewHolder(holder: RecyclerAdapter.PhotoHolder, position: Int) {
+    override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
         val itemPhoto = photos[position]
         holder.bindPhoto(itemPhoto)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.PhotoHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_row, false)
         return PhotoHolder(inflatedView)
     }
