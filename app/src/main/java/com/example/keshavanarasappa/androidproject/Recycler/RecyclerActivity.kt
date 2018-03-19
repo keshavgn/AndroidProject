@@ -17,11 +17,12 @@ import java.util.*
  */
 class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterResponse {
 
-    private var photosList: ArrayList<Photo> = ArrayList()
     private lateinit var imageRequester: ImageRequester
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var adapter: RecyclerAdapter
+    private lateinit var viewModel: RecyclerViewModel
+
     internal var isGridView = false
 
     private val lastVisibleItemPosition: Int
@@ -50,24 +51,27 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recyler)
+        if(savedInstanceState == null) {
+            setContentView(R.layout.activity_recyler)
 
-        linearLayoutManager = LinearLayoutManager(this)
-        gridLayoutManager = GridLayoutManager(this, 2)
-        recyclerView.layoutManager = linearLayoutManager
+            viewModel = RecyclerViewModel.create(this)
+            linearLayoutManager = LinearLayoutManager(this)
+            gridLayoutManager = GridLayoutManager(this, 2)
+            recyclerView.layoutManager = linearLayoutManager
 
-        adapter = RecyclerAdapter(photosList)
-        recyclerView.adapter = adapter
+            adapter = RecyclerAdapter(viewModel.photos())
+            recyclerView.adapter = adapter
 
-        setRecyclerViewScrollListener()
-        setRecyclerViewItemTouchListener()
+            setRecyclerViewScrollListener()
+            setRecyclerViewItemTouchListener()
 
-        imageRequester = ImageRequester(this)
+            imageRequester = ImageRequester(this)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        if (photosList.size == 0) {
+        if (viewModel.numberOfPhotos() == 0) {
             requestPhoto()
         }
     }
@@ -83,8 +87,8 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
     override fun receivedNewPhoto(newPhoto: Photo) {
         runOnUiThread {
-            photosList.add(newPhoto)
-            adapter.notifyItemInserted(photosList.size)
+            viewModel.addPhotoToList(newPhoto)
+            adapter.notifyItemInserted(viewModel.numberOfPhotos())
         }
     }
 
@@ -110,7 +114,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 val position = viewHolder.adapterPosition
-                photosList.removeAt(position)
+                viewModel.removePhotoAt(position)
                 recyclerView.adapter.notifyItemRemoved(position)
             }
         }
@@ -122,7 +126,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
     private fun changeLayoutManager() {
         if (recyclerView.layoutManager == linearLayoutManager) {
             recyclerView.layoutManager = gridLayoutManager
-            if (photosList.size == 1) {
+            if (viewModel.numberOfPhotos() == 1) {
                 requestPhoto()
             }
         } else {

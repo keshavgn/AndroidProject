@@ -7,35 +7,29 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import com.example.keshavanarasappa.androidproject.R
 import com.google.android.flexbox.FlexboxLayout
 import kotlinx.android.synthetic.main.activity_adaptive.*
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
-import java.nio.charset.Charset
-import java.util.*
 
 /**
  * Created by keshava.narasappa on 17/03/18.
  */
 class AdaptiveLayoutActivity: AppCompatActivity() {
 
-    private val locations = ArrayList<Location>()
     private lateinit var locationAdapter: LocationAdapter
+    internal lateinit var viewModel: AdaptiveViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adaptive)
+        viewModel = AdaptiveViewModel.create(this)
         setupRecyclerView()
         if (savedInstanceState != null) {
             val index = savedInstanceState.getInt(SELECTED_LOCATION_INDEX)
-            if (index >= 0 && index < locations.size) {
+            if (index >= 0 && index < viewModel.numberOfLocations()) {
                 locationAdapter.selectedLocationIndex = index
-                loadForecast(locations[index].forecast)
+                loadForecast(viewModel.forcastForLocaiton(index))
             }
         }
     }
@@ -52,64 +46,15 @@ class AdaptiveLayoutActivity: AppCompatActivity() {
         val dividerItemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         recyclerView.addItemDecoration(dividerItemDecoration)
         recyclerView.layoutManager = layoutManager
+        val inputStream = assets.open("data.json")
+        viewModel.loadData(inputStream)
 
-        loadData()
-
-        locationAdapter = LocationAdapter(this, locations, object : LocationAdapter.OnItemClickListener {
+        locationAdapter = LocationAdapter(this, viewModel.locations(), object : LocationAdapter.OnItemClickListener {
             override fun onItemClick(location: Location) {
                 loadForecast(location.forecast)
             }
         })
         recyclerView.adapter = locationAdapter
-    }
-
-    private fun loadData() {
-        val json: String? = loadJsonString()
-        val array: JSONArray? = loadJsonArray(json)
-        loadLocations(array)
-    }
-
-    private fun loadJsonString(): String? {
-        var json: String? = null
-        try {
-            val inputStream = assets.open("data.json")
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            inputStream.close()
-            json = String(buffer, Charset.forName("UTF-8"))
-        } catch (e: IOException) {
-            Log.e("MainActivity", e.toString())
-        }
-        return json
-    }
-
-    private fun loadJsonArray(json: String?): JSONArray? {
-        var array: JSONArray? = null
-        try {
-            if (json != null) {
-                array = JSONArray(json)
-            }
-        } catch (e: JSONException) {
-            Log.e("MainActivity", e.toString())
-        }
-        return array
-    }
-
-    private fun loadLocations(array: JSONArray?) {
-        if (array != null) {
-            for (i in 0 until array.length()) {
-                try {
-                    val jsonObject = array[i] as JSONObject
-                    val stringArray = jsonObject["forecast"] as JSONArray
-                    val forecast = (0 until stringArray.length()).mapTo(ArrayList<String>()) { stringArray.getString(it) }
-                    val location = Location(jsonObject["name"] as String, forecast)
-                    locations.add(location)
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            }
-        }
     }
 
     private fun mapWeatherToDrawable(forecast: String): Drawable? {
