@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
+import android.view.MenuItem
 import com.example.keshavanarasappa.androidproject.R
 import kotlinx.android.synthetic.main.activity_recyler.*
 import java.io.IOException
@@ -23,7 +24,8 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
     private lateinit var adapter: RecyclerAdapter
     private lateinit var viewModel: RecyclerViewModel
 
-    internal var isGridView = false
+    private var isGridView = false
+    private lateinit var menu: Menu
 
     private val lastVisibleItemPosition: Int
         get() = if (recyclerView.layoutManager == linearLayoutManager) {
@@ -32,41 +34,22 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
             gridLayoutManager.findLastVisibleItemPosition()
         }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        val shareItem = menu.findItem(R.id.menu_item)
-        shareItem.setIcon(R.drawable.list)
-        shareItem.setOnMenuItemClickListener {
-            if (isGridView == true) {
-                shareItem.setIcon(R.drawable.grid)
-            } else {
-                shareItem.setIcon(R.drawable.list)
-            }
-            changeLayoutManager()
-            isGridView = !isGridView
-            true
-        }
-        return true
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(savedInstanceState == null) {
-            setContentView(R.layout.activity_recyler)
+        setContentView(R.layout.activity_recyler)
 
-            viewModel = RecyclerViewModel.create(this)
-            linearLayoutManager = LinearLayoutManager(this)
-            gridLayoutManager = GridLayoutManager(this, 2)
-            recyclerView.layoutManager = linearLayoutManager
+        viewModel = RecyclerViewModel.create(this)
+        linearLayoutManager = LinearLayoutManager(this)
+        gridLayoutManager = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = linearLayoutManager
 
-            adapter = RecyclerAdapter(viewModel.photos())
-            recyclerView.adapter = adapter
+        adapter = RecyclerAdapter(viewModel.photos())
+        recyclerView.adapter = adapter
 
-            setRecyclerViewScrollListener()
-            setRecyclerViewItemTouchListener()
+        setRecyclerViewScrollListener()
+        setRecyclerViewItemTouchListener()
 
-            imageRequester = ImageRequester(this)
-        }
+        imageRequester = ImageRequester(this)
     }
 
     override fun onStart() {
@@ -121,6 +104,25 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
         val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        this.menu = menu
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item != null) {
+            if (isGridView) {
+                menu.getItem(0).setIcon(R.drawable.grid)
+            } else {
+                menu.getItem(0).setIcon(R.drawable.list)
+            }
+            changeLayoutManager()
+            isGridView = !isGridView
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun changeLayoutManager() {

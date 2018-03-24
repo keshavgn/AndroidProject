@@ -9,6 +9,6 @@
       android:icon="@drawable/grid"
       android:orderInCategory="300"
       android:title="@string/change_layout_manager"
-      galacticon:showAsAction="ifRoom" />
+      app:showAsAction="always"/>
 
 </menu>

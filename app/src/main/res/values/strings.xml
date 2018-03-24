@@ -1,15 +1,18 @@
 <resources>
-  <string name="app_name">Android Project</string>
-  <string name="api_key">tp1y0YmIDxAvckAUdmgBfOAGqmvAZfCC49j1DHd2</string>
-  <string name="activity_search">Search</string>
-  <string name="activity_recycler">RecyclerView</string>
-  <string name="activity_photos">Photos</string>
-  <string name="activity_details">Item Details</string>
-  <string name="activity_adaptive">Adaptive UI</string>
-  <string name="hint">Hint</string>
-  <string name="textview">TextView</string>
-  <string name="button">Button</string>
+    <string name="app_name">Android Project</string>
+    <string name="api_key">tp1y0YmIDxAvckAUdmgBfOAGqmvAZfCC49j1DHd2</string>
+    <string name="activity_search">Search</string>
+    <string name="activity_recycler">RecyclerView</string>
+    <string name="activity_photos">Photos</string>
+    <string name="activity_details">Item Details</string>
+    <string name="activity_adaptive">Adaptive UI</string>
+    <string name="hint">Hint</string>
+    <string name="textview">TextView</string>
+    <string name="button">Button</string>
 
-  <string name="title_activity_fullscreen">FullscreenActivity</string>
-  <string name="change_layout_manager">Change Layout</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="change_layout_manager"></string>
+    <string name="logged_in">Login</string>
+    <string name="logged_out">Logout</string>
+    <string name="register">Register</string>
 </resources>
