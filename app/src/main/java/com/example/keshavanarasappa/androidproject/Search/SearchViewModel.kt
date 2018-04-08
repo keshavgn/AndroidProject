@@ -15,7 +15,7 @@ import com.example.keshavanarasappa.androidproject.Search.Resource.Status.*
 /**
  * Created by keshava.narasappa on 10/03/18.
  */
-public class SearchViewModel: ViewModel() {
+open class SearchViewModel: ViewModel() {
 
     private val searchResults = MutableLiveData<Resource<JSONArray>>()
 
@@ -52,7 +52,7 @@ public class SearchViewModel: ViewModel() {
 
     companion object {
 
-        private val QUERY_URL = "http://openlibrary.org/search.json?q="
+        private const val QUERY_URL = "http://openlibrary.org/search.json?q="
 
         fun create(activity: SearchActivity): SearchViewModel {
             return ViewModelProviders.of(activity).get(SearchViewModel::class.java)
@@ -79,4 +79,4 @@ class Resource<T> private constructor(val status: Status, val data: T?, val exce
     }
 }
 
-class AppException(val exceptin: Throwable?): Exception();
+class AppException(val exception: Throwable?): Exception()

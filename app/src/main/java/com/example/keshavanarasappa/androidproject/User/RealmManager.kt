@@ -9,8 +9,6 @@ import io.realm.RealmConfiguration
  */
 class RealmManager {
 
-    private var realm: Realm? = null
-
     private var realmConfiguration: RealmConfiguration? = null
 
     fun initializeRealmConfig(applicationContext: Context) {
@@ -19,7 +17,7 @@ class RealmManager {
             val realmConfig = RealmConfiguration.Builder().name(Realm.DEFAULT_REALM_NAME)
                     .schemaVersion(0)
                     .deleteRealmIfMigrationNeeded()
-                    .build();
+                    .build()
             setRealmConfiguration(realmConfig)
         }
     }

@@ -1,5 +1,6 @@
 package com.example.keshavanarasappa.androidproject.Recycler
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
@@ -16,7 +17,7 @@ import java.util.*
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
-class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterResponse {
+class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
 
     private lateinit var imageRequester: ImageRequester
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -24,7 +25,6 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
     private lateinit var adapter: RecyclerAdapter
     private lateinit var viewModel: RecyclerViewModel
 
-    private var isGridView = false
     private lateinit var menu: Menu
 
     private val lastVisibleItemPosition: Int
@@ -45,6 +45,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
         adapter = RecyclerAdapter(viewModel.photos())
         recyclerView.adapter = adapter
+        adapter.recyclerOnClickListener = this as RecyclerAdapter.RecyclerOnClickListener
 
         setRecyclerViewScrollListener()
         setRecyclerViewItemTouchListener()
@@ -73,6 +74,13 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
         }
+    }
+
+    override fun onClickPhoto(photo: Photo?) {
+        val showPhotoIntent = Intent(this, PhotoActivity::class.java)
+        showPhotoIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        showPhotoIntent.putExtra(PHOTO_KEY, photo)
+        startActivity(showPhotoIntent)
     }
 
     private fun setRecyclerViewScrollListener() {
@@ -114,13 +122,12 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item != null) {
-            if (isGridView) {
+            if (recyclerView.layoutManager == linearLayoutManager) {
                 menu.getItem(0).setIcon(R.drawable.grid)
             } else {
                 menu.getItem(0).setIcon(R.drawable.list)
             }
             changeLayoutManager()
-            isGridView = !isGridView
         }
         return super.onOptionsItemSelected(item)
     }
@@ -134,5 +141,10 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
         } else {
             recyclerView.layoutManager = linearLayoutManager
         }
+    }
+
+
+    companion object {
+        private const val PHOTO_KEY = "PHOTO"
     }
 }

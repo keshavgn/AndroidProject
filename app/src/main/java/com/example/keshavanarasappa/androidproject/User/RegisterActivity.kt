@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             if (errorMessage != null) {
-                Toast.makeText(this, "Error: " + errorMessage, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Error: ".plus(errorMessage), Toast.LENGTH_LONG).show()
             } else {
                 realm?.executeTransaction({
                     val user = realm.createObject(User::class.java, nameEditText.text.toString())

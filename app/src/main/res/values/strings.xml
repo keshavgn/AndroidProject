@@ -15,4 +15,8 @@
     <string name="logged_in">Login</string>
     <string name="logged_out">Logout</string>
     <string name="register">Register</string>
+
+    <string name="activity_viewpager">View Pager With Fragment</string>
+    <string name="prev_button_text">Prev</string>
+    <string name="next_button_text">Next</string>
 </resources>

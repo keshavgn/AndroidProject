@@ -19,6 +19,7 @@ import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.Search.SearchActivity
 import com.example.keshavanarasappa.androidproject.User.LoginActivity
 import com.example.keshavanarasappa.androidproject.User.RealmManager
+import com.example.keshavanarasappa.androidproject.ViewPager.ViewPagerActivity
 import io.realm.Realm
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
@@ -50,10 +51,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             startActivity(searchIntent)
         } else if (position == 1) {
             val recyclerIntent = Intent(this, RecyclerActivity::class.java)
+            recyclerIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
             startActivity(recyclerIntent)
         } else if (position == 2) {
             val adaptiveUIIntent = Intent(this, AdaptiveLayoutActivity::class.java)
             startActivity(adaptiveUIIntent)
+        } else if (position == 3) {
+            val viewPagerIntent = Intent(this, ViewPagerActivity::class.java)
+            startActivity(viewPagerIntent)
         }
     }
 

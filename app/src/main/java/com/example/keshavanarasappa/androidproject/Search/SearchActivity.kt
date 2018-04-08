@@ -32,13 +32,13 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
         setContentView(R.layout.search_activity)
 
         mainButton.setOnClickListener(this)
+        mainButton.text = "Search"
 
         jsonAdapterGrid = JSONAdapter(this, layoutInflater)
         mainGridview.onItemClickListener = this
         mainGridview.adapter = jsonAdapterGrid
 
         viewModel = SearchViewModel.create(this)
-        val data = viewModel.getSearchResults()
 
         viewModel.getSearchResults().observe(this, Observer<Resource<JSONArray>> { searchResults ->
             if (searchResults != null) {
@@ -48,8 +48,8 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
                         jsonAdapterGrid.updateData(searchResults.data!!)
                         Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
                     }
-                    Resource.Status.ERROR ->{
-                        Toast.makeText(this, "Error: "+searchResults.exception?.message, Toast.LENGTH_LONG);
+                    Resource.Status.ERROR -> {
+                        Toast.makeText(this, "Error: "+searchResults.exception?.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -59,16 +59,16 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
         displayWelcome()
     }
 
-    fun displayWelcome() {
+    private fun displayWelcome() {
 
         sharedPreferences = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
         val name = sharedPreferences.getString(PREF_NAME, "")
 
-        if (name.length > 0) {
-
+        if (name.isNotEmpty()) {
             Toast.makeText(this, "Welcome back, $name!", Toast.LENGTH_LONG).show()
-        } else {
+        }
+        else {
 
             val alert = AlertDialog.Builder(this)
             alert.setTitle("Hello!")
@@ -77,7 +77,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
             val input = EditText(this)
             alert.setView(input)
 
-            alert.setPositiveButton("OK") { dialog, whichButton ->
+            alert.setPositiveButton("OK") { _, _ ->
                 val inputName = input.text.toString()
 
                 val e = sharedPreferences.edit()
@@ -87,8 +87,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
                 Toast.makeText(applicationContext, "Welcome, $inputName!", Toast.LENGTH_LONG).show()
             }
 
-            alert.setNegativeButton("Cancel") { dialog, whichButton -> }
-
+            alert.setNegativeButton("Cancel") { _, _ -> }
             alert.show()
         }
     }
@@ -97,7 +96,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
         searchBooks()
     }
 
-    fun searchBooks() {
+    private fun searchBooks() {
         viewModel.queryBooks(mainEdittext.text.toString())
 
         val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -122,7 +121,7 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
 
     companion object {
 
-        private val PREFS = "prefs"
-        private val PREF_NAME = "name"
+        private const val PREFS = "prefs"
+        private const val PREF_NAME = "name"
     }
 }

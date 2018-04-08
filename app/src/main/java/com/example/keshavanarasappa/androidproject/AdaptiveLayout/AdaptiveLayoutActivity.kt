@@ -29,7 +29,7 @@ class AdaptiveLayoutActivity: AppCompatActivity() {
             val index = savedInstanceState.getInt(SELECTED_LOCATION_INDEX)
             if (index >= 0 && index < viewModel.numberOfLocations()) {
                 locationAdapter.selectedLocationIndex = index
-                loadForecast(viewModel.forcastForLocaiton(index))
+                loadForecast(viewModel.forcastForLocation(index))
             }
         }
     }
@@ -46,8 +46,7 @@ class AdaptiveLayoutActivity: AppCompatActivity() {
         val dividerItemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         recyclerView.addItemDecoration(dividerItemDecoration)
         recyclerView.layoutManager = layoutManager
-        val inputStream = assets.open("data.json")
-        viewModel.loadData(inputStream)
+        viewModel.loadData(filename = "data.json", context = this)
 
         locationAdapter = LocationAdapter(this, viewModel.locations(), object : LocationAdapter.OnItemClickListener {
             override fun onItemClick(location: Location) {

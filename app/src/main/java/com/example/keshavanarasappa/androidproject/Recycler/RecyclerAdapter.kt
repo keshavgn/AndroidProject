@@ -10,8 +10,15 @@ import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
+
+
 class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapter<RecyclerAdapter.PhotoHolder>() {
+    interface RecyclerOnClickListener {
+        fun onClickPhoto(photo: Photo?)
+    }
+
     override fun getItemCount() = photos.size
+    var recyclerOnClickListener: RecyclerOnClickListener? = null
 
     override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
         val itemPhoto = photos[position]
@@ -20,10 +27,13 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_row, false)
-        return PhotoHolder(inflatedView)
+        val photoHolder = PhotoHolder(inflatedView)
+        photoHolder.recyclerOnClickListener = recyclerOnClickListener
+        return photoHolder
     }
 
     class PhotoHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+        var recyclerOnClickListener: RecyclerOnClickListener? = null
         private var view: View = v
         private var photo: Photo? = null
 
@@ -32,10 +42,7 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
         }
 
         override fun onClick(v: View) {
-            val context = itemView.context
-            val showPhotoIntent = Intent(context, PhotoActivity::class.java)
-            showPhotoIntent.putExtra(PHOTO_KEY, photo)
-            context.startActivity(showPhotoIntent)
+            recyclerOnClickListener?.onClickPhoto(photo)
         }
 
         fun bindPhoto(photo: Photo) {
@@ -43,10 +50,6 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
             Picasso.with(view.context).load(photo.url).into(view.itemImage)
             view.itemDate.text = photo.humanDate
             view.itemDescription.text = photo.explanation
-        }
-
-        companion object {
-            private val PHOTO_KEY = "PHOTO"
         }
     }
 }

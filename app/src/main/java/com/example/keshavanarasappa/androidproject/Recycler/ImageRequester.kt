@@ -20,8 +20,8 @@ class ImageRequester(listeningActivity: Activity) {
         fun receivedNewPhoto(newPhoto: Photo)
     }
 
-    private val calendar: Calendar = Calendar.getInstance()
-    private val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    private val calendar = Calendar.getInstance()
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
     private val responseListener: ImageRequesterResponse
     private val context: Context
     private val client: OkHttpClient
@@ -70,7 +70,7 @@ class ImageRequester(listeningActivity: Activity) {
                             isLoadingData = false
                         } else {
                             getPhoto()
-                            photosCount = photosCount - 1
+                            photosCount -= 1
                         }
                     } else {
                         getPhoto()
@@ -85,13 +85,13 @@ class ImageRequester(listeningActivity: Activity) {
     }
 
     companion object {
-        private val MEDIA_TYPE_KEY = "media_type"
-        private val MEDIA_TYPE_VIDEO_VALUE = "video"
-        private val URL_SCHEME = "https"
-        private val URL_AUTHORITY = "api.nasa.gov"
-        private val URL_PATH_1 = "planetary"
-        private val URL_PATH_2 = "apod"
-        private val URL_QUERY_PARAM_DATE_KEY = "date"
-        private val URL_QUERY_PARAM_API_KEY = "api_key"
+        private const val MEDIA_TYPE_KEY = "media_type"
+        private const val MEDIA_TYPE_VIDEO_VALUE = "video"
+        private const val URL_SCHEME = "https"
+        private const val URL_AUTHORITY = "api.nasa.gov"
+        private const val URL_PATH_1 = "planetary"
+        private const val URL_PATH_2 = "apod"
+        private const val URL_QUERY_PARAM_DATE_KEY = "date"
+        private const val URL_QUERY_PARAM_API_KEY = "api_key"
     }
 }

@@ -2,7 +2,9 @@ package com.example.keshavanarasappa.androidproject.AdaptiveLayout
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.util.Log
+import com.example.keshavanarasappa.androidproject.Common.JsonHelper
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -17,24 +19,10 @@ import java.util.ArrayList
 class AdaptiveViewModel: ViewModel() {
     private val locations = ArrayList<Location>()
 
-    fun loadData(inputStream: InputStream) {
-        val json: String? = loadJsonString(inputStream)
+    fun loadData(filename: String, context: Context) {
+        val json: String? = JsonHelper.loadJsonFromFile(filename, context)
         val array: JSONArray? = loadJsonArray(json)
         loadLocations(array)
-    }
-
-    private fun loadJsonString(inputStream: InputStream): String? {
-        var json: String? = null
-        try {
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            inputStream.close()
-            json = String(buffer, Charset.forName("UTF-8"))
-        } catch (e: IOException) {
-            Log.e("MainActivity", e.toString())
-        }
-        return json
     }
 
     private fun loadJsonArray(json: String?): JSONArray? {
@@ -73,7 +61,7 @@ class AdaptiveViewModel: ViewModel() {
         return locations
     }
 
-    fun forcastForLocaiton(index: Int): List<String> {
+    fun forcastForLocation(index: Int): List<String> {
         return locations[index].forecast
     }
 

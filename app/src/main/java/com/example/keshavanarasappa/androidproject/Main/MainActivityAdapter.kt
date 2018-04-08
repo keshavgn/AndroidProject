@@ -12,7 +12,7 @@ import com.example.keshavanarasappa.androidproject.R
  * Created by keshava.narasappa on 24/02/18.
  */
 class MainActivityAdapter internal constructor(private val context: Context, private val inflater: LayoutInflater) : BaseAdapter() {
-    private val mainList = arrayOf("Search", "RecylerView", "Adaptive UI")
+    private val mainList = arrayOf("Search", "RecylerView", "Adaptive UI", "ViewPager, Tab & Fragment")
 
     init {
     }

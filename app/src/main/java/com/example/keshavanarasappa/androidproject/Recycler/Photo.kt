@@ -36,21 +36,21 @@ class Photo(photoJSON: JSONObject) : Serializable {
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         val humanDateFormat = SimpleDateFormat("dd MMMM yyyy")
+        val cal = Calendar.getInstance()
         try {
             val parsedDateFormat = dateFormat.parse(photoDate)
-            val cal = Calendar.getInstance()
             cal.time = parsedDateFormat
-            return humanDateFormat.format(cal.time)
         } catch (e: ParseException) {
             e.printStackTrace()
             return ""
         }
+        return humanDateFormat.format(cal.time)
 
     }
 
     companion object {
-        private val PHOTO_DATE = "date"
-        private val PHOTO_EXPLANATION = "explanation"
-        private val PHOTO_URL = "url"
+        private const val PHOTO_DATE = "date"
+        private const val PHOTO_EXPLANATION = "explanation"
+        private const val PHOTO_URL = "url"
     }
 }

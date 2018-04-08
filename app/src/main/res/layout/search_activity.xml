@@ -1,42 +1,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <!-- Displays keyboard when touched -->
-    <EditText
-        android:id="@+id/mainEdittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/hint" />
-
-    <!-- List whose dataset is defined in code with an adapter -->
-    <TextView
-        android:id="@+id/mainTextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/textview" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <!-- Set OnClickListener to trigger results when pressed -->
+        <TextView
+            android:id="@+id/mainTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+        <EditText
+            android:id="@+id/mainEdittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="@string/hint" />
+
         <Button
             android:id="@+id/mainButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/button" />
-
+            android:text="@string/button"
+            tools:text="Search" />
     </LinearLayout>
-
 
     <GridView
         android:id="@+id/mainGridview"

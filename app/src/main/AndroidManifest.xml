@@ -61,8 +61,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Main.MainActivity" />
         </activity>
+        <activity
+            android:name=".ViewPager.ViewPagerActivity"
+            android:label="@string/activity_viewpager"
+            android:parentActivityName=".Main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Main.MainActivity" />
+        </activity>
         <activity android:name=".User.LoginActivity" />
-        <activity android:name=".User.RegisterActivity"></activity>
+        <activity android:name=".User.RegisterActivity" />
     </application>
 
 </manifest>
