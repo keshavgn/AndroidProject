@@ -44,7 +44,6 @@ class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnI
             if (searchResults != null) {
                 when (searchResults.status) {
                     Resource.Status.SUCCESS -> {
-
                         jsonAdapterGrid.updateData(searchResults.data!!)
                         Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
                     }
