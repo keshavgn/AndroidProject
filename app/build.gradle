@@ -11,11 +11,11 @@ apply plugin: 'realm-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.keshavanarasappa.androidproject"
         minSdkVersion 26
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,21 +34,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.loopj.android:android-async-http:1.4.4'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation 'com.google.android:flexbox:0.3.2'
     testImplementation 'junit:junit:4.12'
-    testImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.android.support:support-v4:26.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor 'dk.ilios:realmfieldnameshelper:1.1.1'
     implementation 'io.realm:android-adapters:2.1.0'
     implementation 'com.nshmura:recyclertablayout:1.5.0'
