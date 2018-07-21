@@ -1,11 +1,16 @@
 package com.example.keshavanarasappa.androidproject.Recycler
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
+//import javax.swing.text.StyleConstants.getBackground
+import android.graphics.drawable.GradientDrawable
+
+
 
 /**
  * Created by keshava.narasappa on 03/03/18.
@@ -39,6 +44,9 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
 
         init {
             v.setOnClickListener(this)
+            v.setBackgroundResource(R.drawable.corner_shape)
+            val drawable = v.background as GradientDrawable
+            drawable.setStroke(1, Color.GRAY)
         }
 
         override fun onClick(v: View) {

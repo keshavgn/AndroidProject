@@ -2,14 +2,17 @@ package com.example.keshavanarasappa.androidproject.Recycler
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
+import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_photo.*
 
+
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
-class PhotoActivity : AppCompatActivity() {
+class PhotoActivity : BaseActivity() {
 
     private var selectedPhoto: Photo? = null
 

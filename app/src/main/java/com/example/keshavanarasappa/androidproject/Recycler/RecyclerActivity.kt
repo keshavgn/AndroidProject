@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
+import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
 import kotlinx.android.synthetic.main.activity_recyler.*
 import java.io.IOException
@@ -17,7 +18,7 @@ import java.util.*
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
-class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
+class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
 
     private lateinit var imageRequester: ImageRequester
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -33,6 +34,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
         } else {
             gridLayoutManager.findLastVisibleItemPosition()
         }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +75,7 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
         runOnUiThread {
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
+            adapter.notifyDataSetChanged()
         }
     }
 
@@ -121,8 +124,8 @@ class RecyclerActivity: AppCompatActivity(), ImageRequester.ImageRequesterRespon
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item != null) {
-            if (recyclerView.layoutManager == linearLayoutManager) {
+        if (item?.itemId == R.id.menu_item) {
+            if (recyclerView.layoutManager == gridLayoutManager) {
                 menu.getItem(0).setIcon(R.drawable.grid)
             } else {
                 menu.getItem(0).setIcon(R.drawable.list)

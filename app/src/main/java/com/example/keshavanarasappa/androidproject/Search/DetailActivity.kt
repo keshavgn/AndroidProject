@@ -3,9 +3,9 @@ package com.example.keshavanarasappa.androidproject.Search
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.MenuItemCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.support.v7.widget.ShareActionProvider
+import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 /**
  * Created by keshava.narasappa on 24/02/18.
  */
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
     internal var imageURL = ""
     internal var shareActionProvider: ShareActionProvider? = null
 

@@ -14,12 +14,14 @@ import android.widget.*
 import kotlinx.android.synthetic.main.search_activity.*
 import org.json.JSONArray
 import android.arch.lifecycle.Observer
+import android.view.MenuItem
+import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
 
 /**
  * Created by keshava.narasappa on 24/02/18.
  */
-class SearchActivity: AppCompatActivity(), View.OnClickListener, AdapterView.OnItemClickListener  {
+class SearchActivity: BaseActivity(), View.OnClickListener, AdapterView.OnItemClickListener  {
 
     internal lateinit var jsonAdapterGrid: JSONAdapter
     internal lateinit var shareActionProvider: ShareActionProvider

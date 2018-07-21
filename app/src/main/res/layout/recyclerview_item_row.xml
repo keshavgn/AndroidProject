@@ -32,4 +32,5 @@
         android:ellipsize="end"
         android:maxLines="5"
         android:textColor="@color/text_color_primary" />
+
 </LinearLayout>
