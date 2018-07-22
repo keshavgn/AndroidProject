@@ -22,4 +22,7 @@ User Module
 - Using ConstraintLayout for UI to adapt for all the device sizes
 - Using Realm database for register and login user
 
+Maps
+- Displaying Google maps, with custom pin
+- Searching places and showing selected place 
 

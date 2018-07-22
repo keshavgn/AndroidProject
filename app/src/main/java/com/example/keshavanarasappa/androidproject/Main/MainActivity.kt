@@ -14,13 +14,13 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import com.example.keshavanarasappa.androidproject.AdaptiveLayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.Maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.Search.SearchActivity
 import com.example.keshavanarasappa.androidproject.User.LoginActivity
 import com.example.keshavanarasappa.androidproject.User.RealmManager
 import com.example.keshavanarasappa.androidproject.ViewPager.ViewPagerActivity
-import io.realm.Realm
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         } else if (position == 3) {
             val viewPagerIntent = Intent(this, ViewPagerActivity::class.java)
             startActivity(viewPagerIntent)
+        } else if (position == 4) {
+            val mapsIntent = Intent(this, MapsActivity::class.java)
+            startActivity(mapsIntent)
         }
     }
 

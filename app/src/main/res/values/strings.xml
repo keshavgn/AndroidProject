@@ -19,4 +19,6 @@
     <string name="activity_viewpager">View Pager With Fragment</string>
     <string name="prev_button_text">Prev</string>
     <string name="next_button_text">Next</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyDzxurRIHsV7mCrAowton1fsS2Anqf-URs</string>
 </resources>
