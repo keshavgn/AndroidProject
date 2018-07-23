@@ -1,8 +1,8 @@
 package com.example.keshavanarasappa.androidproject.Recycler
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -13,7 +13,6 @@ import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
 import kotlinx.android.synthetic.main.activity_recyler.*
 import java.io.IOException
-import java.util.*
 
 /**
  * Created by keshava.narasappa on 03/03/18.
@@ -53,6 +52,9 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
         setRecyclerViewItemTouchListener()
 
         imageRequester = ImageRequester(this)
+
+        val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
+        changeLayoutManager(index)
     }
 
     override fun onStart() {
@@ -118,31 +120,48 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
         this.menu = menu
-        menuInflater.inflate(R.menu.main, menu)
+        if (index == 1) {
+            menuInflater.inflate(R.menu.main, menu)
+        } else {
+            menuInflater.inflate(R.menu.main2, menu)
+        }
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        var index = 1
         if (item?.itemId == R.id.menu_item) {
             if (recyclerView.layoutManager == gridLayoutManager) {
                 menu.getItem(0).setIcon(R.drawable.grid)
             } else {
                 menu.getItem(0).setIcon(R.drawable.list)
+                index = 2
             }
-            changeLayoutManager()
+            changeLayoutManager(index = index)
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun changeLayoutManager() {
-        if (recyclerView.layoutManager == linearLayoutManager) {
+    private fun changeLayoutManager(index: Int = 1) {
+        val layoutManager = recyclerView.layoutManager
+        if (index == 2) {
             recyclerView.layoutManager = gridLayoutManager
             if (viewModel.numberOfPhotos() == 1) {
                 requestPhoto()
             }
         } else {
             recyclerView.layoutManager = linearLayoutManager
+        }
+
+        if (recyclerView.layoutManager != layoutManager) {
+            val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+            with(sharedPref.edit()) {
+                putInt(getString(R.string.layout_index), index)
+                commit()
+            }
         }
     }
 
