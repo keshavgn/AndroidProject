@@ -26,3 +26,6 @@ Maps
 - Displaying Google maps, with custom pin
 - Searching places and showing selected place 
 
+ML Kit with Firebase
+- Detection text in Image locally and cloud.
+- Navigate to twitter on tapping twitter ID on the image

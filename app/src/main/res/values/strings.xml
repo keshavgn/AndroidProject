@@ -22,4 +22,10 @@
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_key">AIzaSyDzxurRIHsV7mCrAowton1fsS2Anqf-URs</string>
     <string name="layout_index">layout_index</string>
+
+    <string name="mlkit_firebase">ML Kit with Firebase</string>
+    <string name="camera_title">Camera</string>
+    <string name="run_cloud_search">Run cloud search</string>
+    <string name="select_image_for_text_recognition">Select image with @TwitterId for text recognition</string>
+
 </resources>

@@ -14,6 +14,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import com.example.keshavanarasappa.androidproject.AdaptiveLayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.ML_Firebase.MLKitFirebaseActivity
 import com.example.keshavanarasappa.androidproject.Maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
@@ -62,6 +63,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         } else if (position == 4) {
             val mapsIntent = Intent(this, MapsActivity::class.java)
             startActivity(mapsIntent)
+        } else if (position == 5) {
+            val mlkitIntent = Intent(this, MLKitFirebaseActivity::class.java)
+            startActivity(mlkitIntent)
         }
     }
 
