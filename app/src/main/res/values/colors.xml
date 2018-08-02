@@ -11,6 +11,7 @@
   <color name="forecast_grid_background">#89bef2</color>
   <color name="light_blue">#6AC0EB</color>
   <color name="light_blue1">#ADE0FA</color>
+    <color name="action_bar_title">#3884F2</color>
     <color name="light_gray">#E6E8E9</color>
   <color name="colorTitle">#000000</color>
     <color name="photo_tint">#7f101010</color>

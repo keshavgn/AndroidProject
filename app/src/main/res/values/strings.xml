@@ -15,12 +15,13 @@
     <string name="change_layout_manager"></string>
     <string name="logged_in">Login</string>
     <string name="logged_out">Logout</string>
+    <string name="login">Material Design</string>
     <string name="register">Register</string>
 
     <string name="activity_viewpager">View Pager With Fragment</string>
     <string name="prev_button_text">Prev</string>
     <string name="next_button_text">Next</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Maps</string>
     <string name="google_maps_key">AIzaSyDzxurRIHsV7mCrAowton1fsS2Anqf-URs</string>
     <string name="layout_index">layout_index</string>
 
@@ -29,6 +30,8 @@
     <string name="run_cloud_search">Run cloud search</string>
     <string name="select_image_for_text_recognition">Select image with @TwitterId for text recognition</string>
 
+    <string name="material_design">Material Design</string>
+    <string name="material_design_detail">Detail</string>
     <string name="description_login">User Login and Registration screens</string>
     <string name="show_as_list">Show as list</string>
     <string name="show_as_grid">Show as grid</string>
