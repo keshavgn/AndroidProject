@@ -12,7 +12,7 @@ import com.example.keshavanarasappa.androidproject.R
  * Created by keshava.narasappa on 24/02/18.
  */
 class MainActivityAdapter internal constructor(private val context: Context, private val inflater: LayoutInflater) : BaseAdapter() {
-    private val mainList = arrayOf("Search", "RecylerView", "Adaptive UI", "ViewPager, Tab & Fragment", "Maps", "ML Kit with Firebase")
+    private val mainList = arrayOf("Search", "Recyler View", "Adaptive UI", "ViewPager, Tab & Fragment", "Maps", "ML Kit with Firebase", "Material Design")
 
     init {
     }
@@ -46,7 +46,13 @@ class MainActivityAdapter internal constructor(private val context: Context, pri
 
         val rowTitle = getItem(position)
         holder.titleTextView?.text = rowTitle
+        holder.titleTextView?.setTextSize(2, 25.toFloat())
         holder.titleTextView?.minHeight = 50
+
+        // Set the height of the Item View
+        val params = convertView?.layoutParams
+        params?.height = 240
+        convertView?.layoutParams = params
         return convertView
     }
 

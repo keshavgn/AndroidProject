@@ -1,12 +1,15 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorPrimary">@color/light_blue1</item>
+    <item name="colorPrimaryDark">@color/light_blue</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+    <item name="android:navigationBarColor">@color/light_blue1</item>
+    <item name="android:displayOptions">disableHome</item>
+
   </style>
 
   <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
@@ -14,4 +17,5 @@
     <item name="android:src">@drawable/grid</item>
     <item name="android:background">?android:attr/actionBarItemBackground</item>
   </style>
+
 </resources>

@@ -72,7 +72,9 @@
         <activity
             android:name=".Maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".ML_Firebase.MLKitFirebaseActivity"></activity>
+        <activity android:name=".ML_Firebase.MLKitFirebaseActivity" />
+        <activity android:name=".MaterialDesign.MaterialDesignActivity" />
+        <activity android:name=".MaterialDesign.MaterialDesignDetailActivity"></activity>
     </application>
 
 </manifest>

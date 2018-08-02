@@ -120,14 +120,8 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
         this.menu = menu
-        if (index == 1) {
-            menuInflater.inflate(R.menu.main, menu)
-        } else {
-            menuInflater.inflate(R.menu.main2, menu)
-        }
-
+        menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
@@ -156,6 +150,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             recyclerView.layoutManager = linearLayoutManager
         }
 
+        //if layout is changed, save the index to sharePreferences to show the same layout when enter again
         if (recyclerView.layoutManager != layoutManager) {
             val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
             with(sharedPref.edit()) {

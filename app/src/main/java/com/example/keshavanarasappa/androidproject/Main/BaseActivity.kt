@@ -10,7 +10,7 @@ open class BaseActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val ab = actionBar
         ab?.setDisplayHomeAsUpEnabled(true)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

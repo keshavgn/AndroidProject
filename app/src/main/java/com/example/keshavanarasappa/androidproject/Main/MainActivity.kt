@@ -4,31 +4,32 @@
 
 package com.example.keshavanarasappa.androidproject.Main
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ListView
 import com.example.keshavanarasappa.androidproject.AdaptiveLayout.AdaptiveLayoutActivity
 import com.example.keshavanarasappa.androidproject.ML_Firebase.MLKitFirebaseActivity
 import com.example.keshavanarasappa.androidproject.Maps.MapsActivity
+import com.example.keshavanarasappa.androidproject.MaterialDesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.Search.SearchActivity
 import com.example.keshavanarasappa.androidproject.User.LoginActivity
 import com.example.keshavanarasappa.androidproject.User.RealmManager
 import com.example.keshavanarasappa.androidproject.ViewPager.ViewPagerActivity
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
-    private lateinit var mainButton: Button
-    private lateinit var mainListView: ListView
     private lateinit var mainAdapter: MainActivityAdapter
-
     private var isLoggedIn = false
     private lateinit var menu: Menu
 
@@ -37,13 +38,33 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
         setContentView(R.layout.activity_main)
 
-        mainListView = findViewById<View>(R.id.main_listview) as ListView
-
         mainListView.onItemClickListener = this
         mainAdapter = MainActivityAdapter(this, layoutInflater)
         mainListView.adapter = mainAdapter
 
         RealmManager.instance.initializeRealmConfig(applicationContext)
+
+        val isFirstLaunch = this.getPreferences(Context.MODE_PRIVATE).getBoolean(getString(R.string.first_launch), true)
+
+        if (isFirstLaunch) {
+            val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+            with(sharedPref.edit()) {
+                putBoolean(getString(R.string.first_launch), false)
+                commit()
+            }
+
+            TapTargetView.showFor(this,
+                    TapTarget.forBounds(Rect(10, 10, 10, 300), getString(R.string.logged_in),
+                            getString(R.string.description_login))
+                            .cancelable(false)
+                            .tintTarget(true),
+                    object : TapTargetView.Listener() {
+                        override fun onTargetClick(view: TapTargetView) {
+                            super.onTargetClick(view)
+                            view.dismiss(true)
+                        }
+                    })
+        }
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -66,6 +87,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         } else if (position == 5) {
             val mlkitIntent = Intent(this, MLKitFirebaseActivity::class.java)
             startActivity(mlkitIntent)
+        } else if (position == 6) {
+            val materialDesignIntent = Intent(this, MaterialDesignActivity::class.java)
+            startActivity(materialDesignIntent)
         }
     }
 
