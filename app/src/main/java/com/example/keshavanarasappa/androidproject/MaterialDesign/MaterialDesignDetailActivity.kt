@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.MaterialDesign
+package com.example.keshavanarasappa.androidproject.materialdesign
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -19,17 +19,17 @@ import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_material_design_detail.*
 import java.util.*
 
 class MaterialDesignDetailActivity : BaseActivity(), View.OnClickListener {
 
-    lateinit private var inputManager: InputMethodManager
-    lateinit private var place: Place
-    lateinit private var todoList: ArrayList<String>
-    lateinit private var toDoAdapter: ArrayAdapter<*>
+    private lateinit var inputManager: InputMethodManager
+    private lateinit var place: Place
+    private lateinit var todoList: ArrayList<String>
+    private lateinit var toDoAdapter: ArrayAdapter<*>
 
     private var isEditTextVisible: Boolean = false
     private var defaultColor: Int = 0

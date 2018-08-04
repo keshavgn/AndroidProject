@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.keshavanarasappa.androidproject.User.RegisterActivity">
+    tools:context="com.example.keshavanarasappa.androidproject.user.RegisterActivity">
 
     <Button
         android:id="@+id/registerButton"
@@ -17,32 +17,33 @@
         android:text="@string/register"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:background="@drawable/round_corners_background_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statusButton" />
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/emailIdTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Email Id:"
+        android:text="@string/email_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nameEditText"
+        android:id="@+id/emailIdEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nameTextView"
+        app:layout_constraintStart_toEndOf="@+id/emailIdTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -50,9 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="Password:"
-        app:layout_constraintStart_toStartOf="@+id/nameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="@+id/emailIdTextView"
+        app:layout_constraintTop_toBottomOf="@+id/emailIdTextView" />
 
     <TextView
         android:id="@+id/sexTextView"

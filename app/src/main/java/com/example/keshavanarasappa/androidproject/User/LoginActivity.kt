@@ -1,36 +1,36 @@
-package com.example.keshavanarasappa.androidproject.User
+package com.example.keshavanarasappa.androidproject.user
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginButton.setOnClickListener({
+        loginButton.setOnClickListener {
             val realm = RealmManager.instance.getRealm()
-            val user = realm?.where(User::class.java)?.equalTo("emailId", emailEditText.text.toString())?.findFirst()
+            val user = realm?.where(User::class.java)?.equalTo(EMAIL_ID, emailEditText.text.toString())?.findFirst()
             if (user != null) {
                 if (user.password == passwordEditText.text.toString()) {
                     setResults()
                 } else {
-                    Toast.makeText(this, "Error: Wrong password, try again", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, PASSWORD_FAIL, Toast.LENGTH_LONG).show()
                 }
             } else {
-                Toast.makeText(this, "Error: login failed, try again", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, LOGIN_FAIL, Toast.LENGTH_LONG).show()
             }
-        })
+        }
 
-        registerButton.setOnClickListener({
+        registerButton.setOnClickListener {
             val registerIntent = Intent(this, RegisterActivity::class.java)
             startActivityForResult(registerIntent,2)
-        })
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,8 +42,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setResults() {
         val intent = Intent()
-        intent.putExtra("login", true)
+        intent.putExtra(LOGIN, true)
         setResult(200, intent)
         finish()
+    }
+
+    companion object {
+        private const val LOGIN = "login"
+        private const val EMAIL_ID = "emailId"
+        private const val LOGIN_FAIL = "Error: login failed, try again"
+        private const val PASSWORD_FAIL = "Error: Wrong password, try again"
     }
 }

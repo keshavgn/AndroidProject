@@ -1,10 +1,9 @@
-package com.example.keshavanarasappa.androidproject.ViewPager
+package com.example.keshavanarasappa.androidproject.viewpager
 
 import android.content.Context
-import com.example.keshavanarasappa.androidproject.Common.JsonHelper
+import com.example.keshavanarasappa.androidproject.common.JsonHelper
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
 
 /**
  * Created by keshava.narasappa on 08/04/18.

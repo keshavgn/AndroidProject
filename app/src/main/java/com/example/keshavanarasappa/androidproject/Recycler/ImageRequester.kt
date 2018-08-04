@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Recycler
+package com.example.keshavanarasappa.androidproject.recycler
 
 /**
  * Created by keshava.narasappa on 03/03/18.

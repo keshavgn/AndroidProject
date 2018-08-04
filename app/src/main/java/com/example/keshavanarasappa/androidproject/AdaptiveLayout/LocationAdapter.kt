@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.AdaptiveLayout
+package com.example.keshavanarasappa.androidproject.adaptivelayout
 
 import android.content.Context
 import android.graphics.Color

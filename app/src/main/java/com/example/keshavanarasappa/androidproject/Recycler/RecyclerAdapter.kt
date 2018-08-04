@@ -1,15 +1,13 @@
-package com.example.keshavanarasappa.androidproject.Recycler
-import android.content.Intent
+package com.example.keshavanarasappa.androidproject.recycler
+//import javax.swing.text.StyleConstants.getBackground
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
-//import javax.swing.text.StyleConstants.getBackground
-import android.graphics.drawable.GradientDrawable
-
 
 
 /**

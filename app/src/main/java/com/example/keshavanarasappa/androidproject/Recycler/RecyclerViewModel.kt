@@ -1,8 +1,8 @@
-package com.example.keshavanarasappa.androidproject.Recycler
+package com.example.keshavanarasappa.androidproject.recycler
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by keshava.narasappa on 18/03/18.

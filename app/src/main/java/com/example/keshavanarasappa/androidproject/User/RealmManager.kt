@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.User
+package com.example.keshavanarasappa.androidproject.user
 
 import android.content.Context
 import io.realm.Realm

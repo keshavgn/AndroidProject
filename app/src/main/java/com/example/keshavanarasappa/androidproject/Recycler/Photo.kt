@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Recycler
+package com.example.keshavanarasappa.androidproject.recycler
 
 import org.json.JSONException
 import org.json.JSONObject

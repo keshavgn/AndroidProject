@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.AdaptiveLayout
+package com.example.keshavanarasappa.androidproject.adaptivelayout
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle

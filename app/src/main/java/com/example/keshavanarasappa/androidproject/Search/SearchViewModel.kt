@@ -1,15 +1,16 @@
-package com.example.keshavanarasappa.androidproject.Search
+package com.example.keshavanarasappa.androidproject.search
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
+import com.example.keshavanarasappa.androidproject.search.Resource.Status.ERROR
+import com.example.keshavanarasappa.androidproject.search.Resource.Status.SUCCESS
+import okhttp3.OkHttpClient
+import org.json.JSONArray
 import org.json.JSONObject
+import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
-import org.json.JSONArray
-import com.example.keshavanarasappa.androidproject.Search.Resource.Status.*
-import okhttp3.OkHttpClient
-import java.io.IOException
 
 /**
  * Created by keshava.narasappa on 10/03/18.
@@ -73,7 +74,7 @@ class Resource<T> private constructor(val status: Status, val data: T?, val exce
         }
 
         fun <T> error(exception: AppException?): Resource<T> {
-            return Resource(Status.ERROR, null, exception)
+            return Resource(ERROR, null, exception)
         }
 
     }

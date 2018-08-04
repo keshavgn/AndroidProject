@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Recycler
+package com.example.keshavanarasappa.androidproject.recycler
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,11 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
+import android.view.View
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_recyler.*
+import kotlinx.android.synthetic.main.progress_bar.*
 import java.io.IOException
 
 /**
@@ -24,8 +26,8 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var adapter: RecyclerAdapter
     private lateinit var viewModel: RecyclerViewModel
-
     private lateinit var menu: Menu
+    private var count: Int = 0
 
     private val lastVisibleItemPosition: Int
         get() = if (recyclerView.layoutManager == linearLayoutManager) {
@@ -46,7 +48,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
         adapter = RecyclerAdapter(viewModel.photos())
         recyclerView.adapter = adapter
-        adapter.recyclerOnClickListener = this as RecyclerAdapter.RecyclerOnClickListener
+        adapter.recyclerOnClickListener = this
 
         setRecyclerViewScrollListener()
         setRecyclerViewItemTouchListener()
@@ -66,6 +68,8 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
     private fun requestPhoto() {
         try {
+            progressBar(show = true)
+            count = 20
             imageRequester.getPhoto()
         } catch (e: IOException) {
             e.printStackTrace()
@@ -75,6 +79,10 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
     override fun receivedNewPhoto(newPhoto: Photo) {
         runOnUiThread {
+            count--
+            if (count <= 0) {
+                progressBar(show = false)
+            }
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
             adapter.notifyDataSetChanged()
@@ -121,18 +129,23 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         this.menu = menu
-        menuInflater.inflate(R.menu.main, menu)
+        val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
+        if (index == 1) {
+            menuInflater.inflate(R.menu.main_grid, menu)
+        } else {
+            menuInflater.inflate(R.menu.main_list, menu)
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         var index = 1
         if (item?.itemId == R.id.menu_item) {
-            if (recyclerView.layoutManager == gridLayoutManager) {
-                menu.getItem(0).setIcon(R.drawable.grid)
-            } else {
+            if (recyclerView.layoutManager == linearLayoutManager) {
                 menu.getItem(0).setIcon(R.drawable.list)
                 index = 2
+            } else {
+                menu.getItem(0).setIcon(R.drawable.grid)
             }
             changeLayoutManager(index = index)
         }
@@ -155,9 +168,13 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
             with(sharedPref.edit()) {
                 putInt(getString(R.string.layout_index), index)
-                commit()
+                apply()
             }
         }
+    }
+
+    private fun progressBar(show: Boolean) {
+        progressBar.visibility = if (show == true) View.VISIBLE else View.GONE
     }
 
 

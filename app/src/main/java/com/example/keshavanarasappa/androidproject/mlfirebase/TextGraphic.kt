@@ -1,6 +1,7 @@
-package com.example.keshavanarasappa.androidproject.ML_Firebase
+package com.example.keshavanarasappa.androidproject.mlfirebase
 
 import android.graphics.*
+import com.example.keshavanarasappa.androidproject.mlfirebase.GraphicOverlay
 
 class TextGraphic internal constructor(
         overlay: GraphicOverlay,

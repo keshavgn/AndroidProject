@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.ML_Firebase
+package com.example.keshavanarasappa.androidproject.mlfirebase
 
 import android.app.Activity
 import android.content.Intent
@@ -9,10 +9,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_mlkit_firebase.*
 import kotlinx.android.synthetic.main.content_mlkit_firebase.*
+import kotlinx.android.synthetic.main.progress_bar.*
 
 class MLKitFirebaseActivity : BaseActivity(), MLFirebasePresenter.View {
 
@@ -85,12 +86,8 @@ class MLKitFirebaseActivity : BaseActivity(), MLFirebasePresenter.View {
         Toast.makeText(this, "No text detected", Toast.LENGTH_LONG).show()
     }
 
-    override fun showProgress() {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    override fun hideProgress() {
-        progressBar.visibility = View.GONE
+    override fun progressBar(show: Boolean) {
+        progressBar.visibility = if (show == true) View.VISIBLE else View.GONE
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.MaterialDesign
+package com.example.keshavanarasappa.androidproject.materialdesign
 
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -10,14 +10,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_material_design.*
 
 class MaterialDesignActivity : BaseActivity() {
-    lateinit private var staggeredLayoutManager: StaggeredGridLayoutManager
-    lateinit private var adapter: MaterialDesignAdapter
-    lateinit private var menu: Menu
+    private lateinit var staggeredLayoutManager: StaggeredGridLayoutManager
+    private lateinit var adapter: MaterialDesignAdapter
+    private lateinit var menu: Menu
     private var isListView: Boolean = false
 
     private val onItemClickListener = object : MaterialDesignAdapter.OnItemClickListener {

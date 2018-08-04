@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.ML_Firebase
+package com.example.keshavanarasappa.androidproject.mlfirebase
 
 import android.graphics.Bitmap
 import android.graphics.Rect
@@ -12,7 +12,7 @@ class MLFirebasePresenter(val view: View) {
 
     //image processing locally
     fun runTextRecognition(selectedImage: Bitmap) {
-        view.showProgress()
+        view.progressBar(show = true)
         val image = FirebaseVisionImage.fromBitmap(selectedImage)
         val detector = FirebaseVision.getInstance().visionTextDetector
 
@@ -27,7 +27,7 @@ class MLFirebasePresenter(val view: View) {
     }
 
     private fun processTextRecognitionResult(texts: FirebaseVisionText) {
-        view.hideProgress()
+        view.progressBar(show = false)
         val blocks = texts.blocks
         if (blocks.size == 0) {
             view.showNoTextMessage()
@@ -48,7 +48,7 @@ class MLFirebasePresenter(val view: View) {
 
     //image processing in cloud
     fun runCloudTextRecognition(selectedImage: Bitmap) {
-        view.showProgress()
+        view.progressBar(show = true)
         val options = FirebaseVisionCloudDetectorOptions.Builder()
                 .setModelType(FirebaseVisionCloudDetectorOptions.LATEST_MODEL)
                 .setMaxResults(15)
@@ -65,7 +65,7 @@ class MLFirebasePresenter(val view: View) {
     }
 
     private fun processCloudTextRecognitionResult(text: FirebaseVisionCloudText?) {
-        view.hideProgress()
+        view.progressBar(show = false)
         if (text == null) {
             view.showNoTextMessage()
             return
@@ -101,7 +101,6 @@ class MLFirebasePresenter(val view: View) {
         fun showNoTextMessage()
         fun showHandle(text: String, boundingBox: Rect?)
         fun showBox(boundingBox: Rect?)
-        fun showProgress()
-        fun hideProgress()
+        fun progressBar(show: Boolean)
     }
 }

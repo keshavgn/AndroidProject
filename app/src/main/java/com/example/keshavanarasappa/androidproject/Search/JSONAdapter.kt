@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Search
+package com.example.keshavanarasappa.androidproject.search
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,10 +1,8 @@
-package com.example.keshavanarasappa.androidproject.Recycler
+package com.example.keshavanarasappa.androidproject.recycler
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_photo.*
 

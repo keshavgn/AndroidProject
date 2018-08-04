@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.ViewPager
+package com.example.keshavanarasappa.androidproject.viewpager
 
 /**
  * Created by keshava.narasappa on 08/04/18.

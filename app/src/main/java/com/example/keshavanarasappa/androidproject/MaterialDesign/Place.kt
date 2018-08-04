@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.MaterialDesign
+package com.example.keshavanarasappa.androidproject.materialdesign
 
 import android.content.Context
 

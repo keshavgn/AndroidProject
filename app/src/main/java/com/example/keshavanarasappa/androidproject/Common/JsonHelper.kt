@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Common
+package com.example.keshavanarasappa.androidproject.common
 
 import android.content.Context
 import org.json.JSONObject

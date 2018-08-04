@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Main
+package com.example.keshavanarasappa.androidproject.common
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +14,7 @@ open class BaseActivity: AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId != R.id.menu_item) {
+        if (item?.itemId != R.id.menu_item && item?.itemId != R.menu.share) {
             finish()
         }
         return super.onOptionsItemSelected(item)

@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.Maps
+package com.example.keshavanarasappa.androidproject.maps
 
 import android.app.Activity
 import android.content.Intent
@@ -11,8 +11,8 @@ import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import com.example.keshavanarasappa.androidproject.Main.BaseActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.common.api.ResolvableApiException

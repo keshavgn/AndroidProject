@@ -1,10 +1,11 @@
-package com.example.keshavanarasappa.androidproject.AdaptiveLayout
+package com.example.keshavanarasappa.androidproject.adaptivelayout
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.util.Log
-import com.example.keshavanarasappa.androidproject.Common.JsonHelper
+import com.example.keshavanarasappa.androidproject.adaptivelayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.common.JsonHelper
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

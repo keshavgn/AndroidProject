@@ -1,8 +1,10 @@
-package com.example.keshavanarasappa.androidproject.ViewPager
+package com.example.keshavanarasappa.androidproject.viewpager
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.example.keshavanarasappa.androidproject.R
+import com.example.keshavanarasappa.androidproject.viewpager.MovieHelper
+import com.example.keshavanarasappa.androidproject.viewpager.MoviesPagerAdapter
 import kotlinx.android.synthetic.main.activity_view_pager.*
 
 class ViewPagerActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.ML_Firebase
+package com.example.keshavanarasappa.androidproject.mlfirebase
 
 import android.content.Context
 import android.content.Intent

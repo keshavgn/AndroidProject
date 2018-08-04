@@ -2,10 +2,11 @@
  * Created by keshava.narasappa on 24/02/18.
  */
 
-package com.example.keshavanarasappa.androidproject.Main
+package com.example.keshavanarasappa.androidproject.main
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -13,16 +14,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import com.example.keshavanarasappa.androidproject.AdaptiveLayout.AdaptiveLayoutActivity
-import com.example.keshavanarasappa.androidproject.ML_Firebase.MLKitFirebaseActivity
-import com.example.keshavanarasappa.androidproject.Maps.MapsActivity
-import com.example.keshavanarasappa.androidproject.MaterialDesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.R
-import com.example.keshavanarasappa.androidproject.Recycler.RecyclerActivity
-import com.example.keshavanarasappa.androidproject.Search.SearchActivity
-import com.example.keshavanarasappa.androidproject.User.LoginActivity
-import com.example.keshavanarasappa.androidproject.User.RealmManager
-import com.example.keshavanarasappa.androidproject.ViewPager.ViewPagerActivity
+import com.example.keshavanarasappa.androidproject.adaptivelayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.maps.MapsActivity
+import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
+import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
+import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
+import com.example.keshavanarasappa.androidproject.search.SearchActivity
+import com.example.keshavanarasappa.androidproject.user.LoginActivity
+import com.example.keshavanarasappa.androidproject.user.RealmManager
+import com.example.keshavanarasappa.androidproject.viewpager.ViewPagerActivity
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         setContentView(R.layout.activity_main)
 
         mainListView.onItemClickListener = this
-        mainAdapter = MainActivityAdapter(this, layoutInflater)
+        mainAdapter = MainActivityAdapter(layoutInflater)
         mainListView.adapter = mainAdapter
 
         RealmManager.instance.initializeRealmConfig(applicationContext)
@@ -50,11 +51,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
             with(sharedPref.edit()) {
                 putBoolean(getString(R.string.first_launch), false)
-                commit()
+                apply()
             }
 
             TapTargetView.showFor(this,
-                    TapTarget.forBounds(Rect(10, 10, 10, 300), getString(R.string.logged_in),
+                    TapTarget.forBounds(Rect(getLeftPosition(), 0, 0, 300), getString(R.string.logged_in),
                             getString(R.string.description_login))
                             .cancelable(false)
                             .tintTarget(true),
@@ -67,29 +68,41 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         }
     }
 
+    private fun getLeftPosition(): Int {
+        return (Resources.getSystem().displayMetrics.widthPixels - 100) * 2
+    }
+
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        if (position == 0) {
-            val searchIntent = Intent(this, SearchActivity::class.java)
-            startActivity(searchIntent)
-        } else if (position == 1) {
-            val recyclerIntent = Intent(this, RecyclerActivity::class.java)
-            recyclerIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-            startActivity(recyclerIntent)
-        } else if (position == 2) {
-            val adaptiveUIIntent = Intent(this, AdaptiveLayoutActivity::class.java)
-            startActivity(adaptiveUIIntent)
-        } else if (position == 3) {
-            val viewPagerIntent = Intent(this, ViewPagerActivity::class.java)
-            startActivity(viewPagerIntent)
-        } else if (position == 4) {
-            val mapsIntent = Intent(this, MapsActivity::class.java)
-            startActivity(mapsIntent)
-        } else if (position == 5) {
-            val mlkitIntent = Intent(this, MLKitFirebaseActivity::class.java)
-            startActivity(mlkitIntent)
-        } else if (position == 6) {
-            val materialDesignIntent = Intent(this, MaterialDesignActivity::class.java)
-            startActivity(materialDesignIntent)
+        when(position) {
+            0 -> {
+                val searchIntent = Intent(this, SearchActivity::class.java)
+                startActivity(searchIntent)
+            }
+            1 -> {
+                val recyclerIntent = Intent(this, RecyclerActivity::class.java)
+                recyclerIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                startActivity(recyclerIntent)
+            }
+            2 -> {
+                val adaptiveUIIntent = Intent(this, AdaptiveLayoutActivity::class.java)
+                startActivity(adaptiveUIIntent)
+            }
+            3 -> {
+                val viewPagerIntent = Intent(this, ViewPagerActivity::class.java)
+                startActivity(viewPagerIntent)
+            }
+            4 -> {
+                val mapsIntent = Intent(this, MapsActivity::class.java)
+                startActivity(mapsIntent)
+            }
+            5 -> {
+                val mlkitIntent = Intent(this, MLKitFirebaseActivity::class.java)
+                startActivity(mlkitIntent)
+            }
+            6 -> {
+                val materialDesignIntent = Intent(this, MaterialDesignActivity::class.java)
+                startActivity(materialDesignIntent)
+            }
         }
     }
 

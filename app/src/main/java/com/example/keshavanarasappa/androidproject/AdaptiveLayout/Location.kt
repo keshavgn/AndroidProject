@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.AdaptiveLayout
+package com.example.keshavanarasappa.androidproject.adaptivelayout
 
 /**
  * Created by keshava.narasappa on 17/03/18.

@@ -1,4 +1,4 @@
-package com.example.keshavanarasappa.androidproject.ViewPager
+package com.example.keshavanarasappa.androidproject.viewpager
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

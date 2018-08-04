@@ -29,3 +29,6 @@ Maps
 ML Kit with Firebase
 - Detection text in Image locally and cloud.
 - Navigate to twitter on tapping twitter ID on the image
+
+Material Design
+- Custom View animations, Custom window animation
