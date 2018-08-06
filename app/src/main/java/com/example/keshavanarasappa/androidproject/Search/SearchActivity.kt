@@ -44,11 +44,11 @@ class SearchActivity: BaseActivity(), View.OnClickListener, AdapterView.OnItemCl
                 progressBar(show = false)
                 when (searchResults.status) {
                     Resource.Status.SUCCESS -> {
-                        jsonAdapterGrid.updateData(searchResults.data!!)
-                        Toast.makeText(applicationContext, "Success!", Toast.LENGTH_LONG).show()
+                        searchResults.data?.let { jsonAdapterGrid.updateData(it) }
+                        Toast.makeText(applicationContext, SUCCESS, Toast.LENGTH_LONG).show()
                     }
                     Resource.Status.ERROR -> {
-                        Toast.makeText(this, "Error: "+searchResults.exception?.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, ERROR + searchResults.exception?.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -109,7 +109,7 @@ class SearchActivity: BaseActivity(), View.OnClickListener, AdapterView.OnItemCl
 
         val detailIntent = Intent(this, DetailActivity::class.java)
 
-        detailIntent.putExtra(COVERID, coverID)
+        detailIntent.putExtra(COVER_ID, coverID)
         startActivity(detailIntent)
     }
 
@@ -123,10 +123,12 @@ class SearchActivity: BaseActivity(), View.OnClickListener, AdapterView.OnItemCl
         private const val COVER_I = "cover_i"
         private const val WELCOME = "Welcome"
         private const val WELCOME_BACK = "Welcome back"
+        private const val SUCCESS = "Success!"
         private const val ALERT_TITLE = "Hello!"
         private const val OK ="OK"
         private const val CANCEL ="Cancel"
-        private const val COVERID ="coverID"
+        private const val ERROR = "Error: "
+        private const val COVER_ID ="coverID"
         private const val ALERT_MESSAGE ="What is your name?"
     }
 }

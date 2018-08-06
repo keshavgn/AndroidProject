@@ -59,7 +59,7 @@ class ImageRequester(listeningActivity: Activity) {
             override fun onResponse(call: Call, response: Response) {
 
                 try {
-                    val photoJSON = JSONObject(response.body()!!.string())
+                    val photoJSON = JSONObject(response.body()?.string())
 
                     calendar.add(Calendar.DAY_OF_YEAR, -1)
 

@@ -31,20 +31,11 @@ class JSONAdapter internal constructor(private val context: Context,
         notifyDataSetChanged()
     }
 
-    override fun getCount(): Int {
-        return jsonArray!!.length()
-    }
+    override fun getCount(): Int = jsonArray?.length() ?: 0
 
-    override fun getItem(position: Int): JSONObject {
-        return jsonArray!!.optJSONObject(position)
-    }
+    override fun getItem(position: Int): JSONObject = jsonArray?.optJSONObject(position) ?: JSONObject()
 
-    override fun getItemId(position: Int): Long {
-
-        // your particular dataset uses String IDs
-        // but you have to put something in this method
-        return position.toLong()
-    }
+    override fun getItemId(position: Int) = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
@@ -80,13 +71,13 @@ class JSONAdapter internal constructor(private val context: Context,
         val jsonObject = getItem(position)
 
         // See if there is a cover ID in the Object
-        if (jsonObject.has("cover_i")) {
+        if (jsonObject.has(COVER_I)) {
 
             // If so, grab the Cover ID out from the object
-            val imageID = jsonObject.optString("cover_i")
+            val imageID = jsonObject.optString(COVER_I)
 
             // Construct the image URL (specific to API)
-            val imageURL = (IMAGE_URL_BASE + imageID + "-S.jpg")
+            val imageURL = (IMAGE_URL_BASE + imageID + IMAGE_URL_EXT)
 
             // Use Picasso to load the image
             // Temporarily have a placeholder in case it's slow to load
@@ -104,12 +95,12 @@ class JSONAdapter internal constructor(private val context: Context,
         var bookTitle = ""
         var authorName = ""
 
-        if (jsonObject.has("title")) {
-            bookTitle = jsonObject.optString("title")
+        if (jsonObject.has(TITLE)) {
+            bookTitle = jsonObject.optString(TITLE)
         }
 
-        if (jsonObject.has("author_name")) {
-            authorName = jsonObject.optJSONArray("author_name")
+        if (jsonObject.has(AUTHOR_NAME)) {
+            authorName = jsonObject.optJSONArray(AUTHOR_NAME)
                     .optString(0)
         }
 
@@ -129,8 +120,11 @@ class JSONAdapter internal constructor(private val context: Context,
     }
 
     companion object {
-
-        private val IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/"
+        private const val IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/"
+        private const val IMAGE_URL_EXT = "-S.jpg"
+        private const val AUTHOR_NAME = "author_name"
+        private const val TITLE = "title"
+        private const val COVER_I = "cover_i"
     }
 }
 

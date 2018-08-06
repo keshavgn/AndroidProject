@@ -15,17 +15,11 @@ class MainActivityAdapter internal constructor(private val inflater: LayoutInfla
 
     init {
     }
-    override fun getCount(): Int {
-        return mainList.count()
-    }
+    override fun getCount(): Int = mainList.count()
 
-    override fun getItem(position: Int): String {
-        return mainList[position]
-    }
+    override fun getItem(position: Int) = mainList[position]
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
+    override fun getItemId(position: Int) = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         var item = convertView

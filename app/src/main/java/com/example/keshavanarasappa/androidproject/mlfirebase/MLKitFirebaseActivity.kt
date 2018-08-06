@@ -40,7 +40,7 @@ class MLKitFirebaseActivity : BaseActivity(), MLFirebasePresenter.View {
                     imageView.setImageBitmap(selectedImageBitmap)
                     setUpCloudSearch(selectedImageBitmap)
                     overlay.clear()
-                    presenter.runTextRecognition(selectedImageBitmap!!)
+                    selectedImageBitmap?.let { presenter.runTextRecognition(it) }
                     textView.visibility = View.INVISIBLE
                 }
             }
@@ -52,7 +52,7 @@ class MLKitFirebaseActivity : BaseActivity(), MLFirebasePresenter.View {
         cameraButton.setTextColor(getColor(R.color.text_color_primary))
         cameraButton.setOnClickListener {
             overlay.clear()
-            presenter.runCloudTextRecognition(selectedImageBitmap!!)
+            selectedImageBitmap?.let { presenter.runCloudTextRecognition(it) }
         }
     }
 

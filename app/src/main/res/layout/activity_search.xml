@@ -36,11 +36,11 @@
             tools:text="Search" />
     </LinearLayout>
 
-    <include layout="@layout/progress_bar" />
     <GridView
         android:id="@+id/mainGridview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
         android:columnWidth="100dp"
         android:gravity="center"
         android:horizontalSpacing="10dp"
@@ -48,4 +48,12 @@
         android:stretchMode="spacingWidthUniform"
         android:verticalSpacing="24dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/progress_bar" />
+    </LinearLayout>
 </LinearLayout>

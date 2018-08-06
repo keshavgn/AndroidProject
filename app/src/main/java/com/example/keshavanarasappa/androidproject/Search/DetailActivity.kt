@@ -24,18 +24,18 @@ class DetailActivity : BaseActivity() {
 
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val coverId = this.intent.extras!!.getString("coverID")
+        val coverId = this.intent.extras?.getString(COVER_ID)
 
-        if (!coverId.isEmpty()) {
-            imageURL = IMAGE_URL_BASE.plus(coverId).plus("-L.jpg")
+        coverId?.let {
+            imageURL = IMAGE_URL_BASE.plus(it).plus(IMAGE_URL_EXTENSION)
             Picasso.with(this).load(imageURL).placeholder(R.drawable.img_books_loading).into(imageView)
         }
     }
 
     private fun setShareIntent() {
         val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Book Recommendation!")
+        shareIntent.type = INTENT_TYPE
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, SUBJECT)
         shareIntent.putExtra(Intent.EXTRA_TEXT, imageURL)
         startActivity(shareIntent)
 //        if (shareActionProvider != null) {
@@ -60,5 +60,9 @@ class DetailActivity : BaseActivity() {
 
     companion object {
         private const val IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/"
+        private const val IMAGE_URL_EXTENSION = "-L.jpg"
+        private const val INTENT_TYPE = "text/plain"
+        private const val SUBJECT = "Book Recommendation!"
+        private const val COVER_ID = "coverID"
     }
 }

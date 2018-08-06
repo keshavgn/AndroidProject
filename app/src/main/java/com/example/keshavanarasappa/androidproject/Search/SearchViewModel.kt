@@ -46,7 +46,7 @@ open class SearchViewModel: ViewModel() {
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
                 val result = response.body()!!.string()
                 val jsonObject = JSONObject(result)
-                    updateSearchResults(Resource.success(jsonObject.optJSONArray("docs")))
+                updateSearchResults(Resource.success(jsonObject.optJSONArray("docs")))
             }
         })
     }
