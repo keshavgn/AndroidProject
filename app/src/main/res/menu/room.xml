@@ -1,0 +1,13 @@
+<!-- Defines the menu item that will appear on the Action Bar in MainActivity -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:galacticon="http://schemas.android.com/tools">
+
+  <!-- Share item -->
+  <item
+      android:id="@+id/menu_room"
+      android:orderInCategory="300"
+      android:title="New"
+      app:showAsAction="always"/>
+
+</menu>

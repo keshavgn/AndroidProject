@@ -38,4 +38,11 @@
     <string name="show_as_grid">Show as grid</string>
     <string name="md_detail">Detail</string>
 
+    <string name="room_contacts">Contacts</string>
+    <string name="new_contacts">New Contact</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone No</string>
+    <string name="city">City</string>
+    <string name="save_button">Save</string>
+
 </resources>

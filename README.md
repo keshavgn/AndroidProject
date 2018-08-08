@@ -1,7 +1,7 @@
 # AndroidProject
 
 Home Screen
-- Listview to display features list 
+- List view to display features list 
 
 Search Screen
 - GridView to display search items from "http://openlibrary.org/search.json"
@@ -15,7 +15,7 @@ Adaptive UI Screen
 - Displaying location data from local json file
 - Using different layout for landscape and portrait and works on all device size
 
-View Pager with Fragement
+View Pager with Fragment
 - Using ViewPager with local json file to display data on different pages with Fragment
 
 User Module
@@ -32,3 +32,7 @@ ML Kit with Firebase
 
 Material Design
 - Custom View animations, Custom window animation
+
+Room database
+- Room database, View data binding with Recycler view
+- Fragment with custom presentation animations

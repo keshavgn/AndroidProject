@@ -14,7 +14,7 @@ open class BaseActivity: AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId != R.id.menu_item && item?.itemId != R.menu.share) {
+        if (item?.itemId != R.id.menu_item && item?.itemId != R.menu.share && item?.itemId != R.id.menu_room) {
             finish()
         }
         return super.onOptionsItemSelected(item)

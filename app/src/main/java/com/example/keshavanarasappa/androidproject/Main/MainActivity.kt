@@ -20,6 +20,7 @@ import com.example.keshavanarasappa.androidproject.maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
 import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
+import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
 import com.example.keshavanarasappa.androidproject.user.LoginActivity
 import com.example.keshavanarasappa.androidproject.user.RealmManager
@@ -73,37 +74,36 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        var intent = Intent()
         when(position) {
             0 -> {
-                val searchIntent = Intent(this, SearchActivity::class.java)
-                startActivity(searchIntent)
+                intent = Intent(this, SearchActivity::class.java)
             }
             1 -> {
                 val recyclerIntent = Intent(this, RecyclerActivity::class.java)
                 recyclerIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-                startActivity(recyclerIntent)
+                intent = recyclerIntent
             }
             2 -> {
-                val adaptiveUIIntent = Intent(this, AdaptiveLayoutActivity::class.java)
-                startActivity(adaptiveUIIntent)
+                intent = Intent(this, AdaptiveLayoutActivity::class.java)
             }
             3 -> {
-                val viewPagerIntent = Intent(this, ViewPagerActivity::class.java)
-                startActivity(viewPagerIntent)
+                intent = Intent(this, ViewPagerActivity::class.java)
             }
             4 -> {
-                val mapsIntent = Intent(this, MapsActivity::class.java)
-                startActivity(mapsIntent)
+                intent = Intent(this, MapsActivity::class.java)
             }
             5 -> {
-                val mlkitIntent = Intent(this, MLKitFirebaseActivity::class.java)
-                startActivity(mlkitIntent)
+                intent = Intent(this, MLKitFirebaseActivity::class.java)
             }
             6 -> {
-                val materialDesignIntent = Intent(this, MaterialDesignActivity::class.java)
-                startActivity(materialDesignIntent)
+                intent = Intent(this, MaterialDesignActivity::class.java)
+            }
+            7 -> {
+                intent = Intent(this, RoomDatabaseActivity::class.java)
             }
         }
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
