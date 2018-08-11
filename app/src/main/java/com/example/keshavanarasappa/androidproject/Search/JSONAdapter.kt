@@ -18,7 +18,7 @@ import org.json.JSONObject
  */
 class JSONAdapter internal constructor(private val context: Context,
                                        private val inflater: LayoutInflater) : BaseAdapter() {
-    public var jsonArray: JSONArray? = null
+    var jsonArray: JSONArray? = null
 
     init {
         jsonArray = JSONArray()

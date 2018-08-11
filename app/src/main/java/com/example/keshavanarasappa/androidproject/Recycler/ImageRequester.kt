@@ -25,7 +25,7 @@ class ImageRequester(listeningActivity: Activity) {
     private val responseListener: ImageRequesterResponse
     private val context: Context
     private val client: OkHttpClient
-    public var photosCount = 20
+    var photosCount = 20
     var isLoadingData: Boolean = false
         private set
 
