@@ -1,0 +1,26 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="maps"
+        android:enabled="true"
+        android:icon="@drawable/maps"
+        android:shortcutShortLabel="@string/maps_shortcut_short_label"
+        android:shortcutLongLabel="@string/maps_shortcut_long_label"
+        android:shortcutDisabledMessage="@string/maps_disabled_message">
+       <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.keshavanarasappa.androidproject"
+            android:targetClass="com.example.keshavanarasappa.androidproject.maps.MapsActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="recycler"
+        android:enabled="true"
+        android:icon="@drawable/recycler"
+        android:shortcutShortLabel="@string/recycler_shortcut_short_label"
+        android:shortcutLongLabel="@string/recycler_shortcut_long_label"
+        android:shortcutDisabledMessage="@string/recycler_disabled_message">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.keshavanarasappa.androidproject"
+            android:targetClass="com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity" />
+    </shortcut>
+</shortcuts>

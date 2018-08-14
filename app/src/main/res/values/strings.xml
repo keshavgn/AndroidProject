@@ -45,4 +45,10 @@
     <string name="city">City</string>
     <string name="save_button">Save</string>
 
+    <string name="maps_shortcut_short_label">Maps</string>
+    <string name="maps_shortcut_long_label">Maps</string>
+    <string name="maps_disabled_message">Maps</string>
+    <string name="recycler_shortcut_short_label">Recycler</string>
+    <string name="recycler_shortcut_long_label">Recycler</string>
+    <string name="recycler_disabled_message">Recycler</string>
 </resources>
