@@ -23,7 +23,7 @@ class RoomDatabaseActivity : BaseActivity(), NewContactFragment.OnFragmentIntera
 
         AsyncTask.execute {
             RoomDatabaseApplication.fetchPeople()?.let {
-                setupRecyclerAdapter(it)
+                runOnUiThread { setupRecyclerAdapter(it) }
             }
         }
     }
@@ -43,11 +43,6 @@ class RoomDatabaseActivity : BaseActivity(), NewContactFragment.OnFragmentIntera
                 runOnUiThread { roomDatabaseAdapter.notifyDataSetChanged() }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        updateContacts()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
