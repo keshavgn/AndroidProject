@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.adaptivelayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.animations.AnimationsActivity
 import com.example.keshavanarasappa.androidproject.maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
@@ -101,6 +102,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             }
             7 -> {
                 intent = Intent(this, RoomDatabaseActivity::class.java)
+            }
+            8 -> {
+                intent = Intent(this, AnimationsActivity::class.java)
             }
         }
         startActivity(intent)

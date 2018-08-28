@@ -26,4 +26,7 @@
   <color name="secondaryTextColor">#ffffff</color>
   <color name="listItemsTextColor">#757575</color>
 
+  <color name="background_from">#2F312E</color>
+  <color name="background_to">#CB16C8</color>
+
 </resources>

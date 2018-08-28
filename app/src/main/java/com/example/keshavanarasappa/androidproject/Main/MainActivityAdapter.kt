@@ -11,7 +11,7 @@ import com.example.keshavanarasappa.androidproject.R
  * Created by keshava.narasappa on 24/02/18.
  */
 class MainActivityAdapter internal constructor(private val inflater: LayoutInflater) : BaseAdapter() {
-    private val mainList = arrayOf("Search", "Recyler View", "Adaptive UI", "ViewPager, Tab & Fragment", "Maps", "ML Kit with Firebase", "Material Design", "Room database, View data binding")
+    private val mainList = arrayOf("Search", "Recyler View", "Adaptive UI", "ViewPager, Tab & Fragment", "Maps", "ML Kit with Firebase", "Material Design", "Room database, View data binding", "Animations")
 
     init {
     }

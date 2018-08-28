@@ -36,3 +36,6 @@ Material Design
 Room database
 - Room database, View data binding with Recycler view
 - Fragment with custom presentation animations
+
+Animations
+- Value, Object and Property animations with Animation sets
