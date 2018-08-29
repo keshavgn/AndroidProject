@@ -25,6 +25,7 @@ import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
 import com.example.keshavanarasappa.androidproject.user.LoginActivity
 import com.example.keshavanarasappa.androidproject.user.RealmManager
+import com.example.keshavanarasappa.androidproject.videoplayer.VideoPlayerActivity
 import com.example.keshavanarasappa.androidproject.viewpager.ViewPagerActivity
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
@@ -105,6 +106,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             }
             8 -> {
                 intent = Intent(this, AnimationsActivity::class.java)
+            }
+            9 -> {
+                intent = Intent(this, VideoPlayerActivity::class.java)
             }
         }
         startActivity(intent)

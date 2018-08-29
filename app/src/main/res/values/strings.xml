@@ -65,4 +65,12 @@
     <string name="title_jump_and_blink">Jump and blink (Animations in XML)</string>
     <string name="title_color_animation">Background color</string>
 
+    <string name="msg_playback_ended">playback ended</string>
+    <string name="msg_playback_started">playback started</string>
+    <string name="msg_playback_paused">playback paused</string>
+    <string name="video_player_title">Video Player</string>
+    <string name="title_activity_tabbar">TabbarActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
 </resources>

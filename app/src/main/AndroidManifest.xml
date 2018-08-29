@@ -4,9 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. -->
+         location permissions for the 'MyLocation' functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -19,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".common.BaseActivity" />
-        <activity android:name=".main.MainActivity"
+        <activity
+            android:name=".main.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -42,31 +45,39 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
-        <activity android:name=".search.SearchActivity"
+        <activity
+            android:name=".search.SearchActivity"
             android:label="@string/activity_search" />
-        <activity android:name=".recycler.RecyclerActivity"
+        <activity
+            android:name=".recycler.RecyclerActivity"
             android:label="@string/activity_recycler" />
-        <activity android:name=".recycler.PhotoActivity"
+        <activity
+            android:name=".recycler.PhotoActivity"
             android:label="@string/activity_photos" />
-        <activity android:name=".search.DetailActivity"
+        <activity
+            android:name=".search.DetailActivity"
             android:label="@string/activity_details" />
-        <activity android:name=".adaptivelayout.AdaptiveLayoutActivity"
+        <activity
+            android:name=".adaptivelayout.AdaptiveLayoutActivity"
             android:label="@string/activity_adaptive"
             android:parentActivityName=".main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity" />
         </activity>
-        <activity android:name=".viewpager.ViewPagerActivity"
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
             android:label="@string/activity_viewpager"
             android:parentActivityName=".main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity" />
         </activity>
-        <activity android:name=".user.LoginActivity"
+        <activity
+            android:name=".user.LoginActivity"
             android:label="@string/logged_in" />
-        <activity android:name=".user.RegisterActivity"
+        <activity
+            android:name=".user.RegisterActivity"
             android:label="@string/register" />
         <!--
      The API key for Google Maps-based APIs is defined as a string resource.
@@ -76,45 +87,74 @@
      sign the APK for publishing.
      You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data android:name="com.google.android.geo.API_KEY"
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <meta-data android:name="preloaded_fonts"
+        <meta-data
+            android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".maps.MapsActivity"
+        <activity
+            android:name=".maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".mlfirebase.MLKitFirebaseActivity"
+        <activity
+            android:name=".mlfirebase.MLKitFirebaseActivity"
             android:label="@string/mlkit_firebase" />
-        <activity android:name=".materialdesign.MaterialDesignActivity"
+        <activity
+            android:name=".materialdesign.MaterialDesignActivity"
             android:label="@string/material_design" />
-        <activity android:name=".materialdesign.MaterialDesignDetailActivity"
+        <activity
+            android:name=".materialdesign.MaterialDesignDetailActivity"
             android:label="@string/material_design_detail" />
-        <activity android:name=".room.RoomDatabaseActivity"
+        <activity
+            android:name=".room.RoomDatabaseActivity"
             android:label="@string/room_contacts" />
-        <activity android:name=".animations.AnimationsActivity"
+        <activity
+            android:name=".animations.AnimationsActivity"
             android:label="@string/animations_title" />
-        <activity android:name=".animations.activities.AccelerateRocketAnimationActivity"
+        <activity
+            android:name=".animations.activities.AccelerateRocketAnimationActivity"
             android:label="@string/title_accelerate_rocket" />
-        <activity android:name=".animations.activities.ColorAnimationActivity"
+        <activity
+            android:name=".animations.activities.ColorAnimationActivity"
             android:label="@string/title_color_animation" />
-        <activity android:name=".animations.activities.FlyThereAndBackAnimationActivity"
+        <activity
+            android:name=".animations.activities.FlyThereAndBackAnimationActivity"
             android:label="@string/title_there_and_back" />
-        <activity android:name=".animations.activities.FlyWithDogeAnimationActivity"
+        <activity
+            android:name=".animations.activities.FlyWithDogeAnimationActivity"
             android:label="@string/title_with_doge" />
-        <activity android:name=".animations.activities.LaunchAndSpinAnimatorSetAnimationActivity"
+        <activity
+            android:name=".animations.activities.LaunchAndSpinAnimatorSetAnimationActivity"
             android:label="@string/launch_spin" />
-        <activity android:name=".animations.activities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
+        <activity
+            android:name=".animations.activities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
             android:label="@string/launch_spin_viewpropertyanimator" />
-        <activity android:name=".animations.activities.LaunchRocketObjectAnimatorAnimationActivity"
+        <activity
+            android:name=".animations.activities.LaunchRocketObjectAnimatorAnimationActivity"
             android:label="@string/title_launch_rocket_objectanimator" />
-        <activity android:name=".animations.activities.LaunchRocketValueAnimatorAnimationActivity"
+        <activity
+            android:name=".animations.activities.LaunchRocketValueAnimatorAnimationActivity"
             android:label="@string/title_launch_rocket" />
-        <activity android:name=".animations.activities.RotateRocketAnimationActivity"
+        <activity
+            android:name=".animations.activities.RotateRocketAnimationActivity"
             android:label="@string/title_spin_rocket" />
-        <activity android:name=".animations.activities.WithListenerAnimationActivity"
+        <activity
+            android:name=".animations.activities.WithListenerAnimationActivity"
             android:label="@string/title_animation_events" />
-        <activity android:name=".animations.activities.XmlAnimationActivity"
+        <activity
+            android:name=".animations.activities.XmlAnimationActivity"
             android:label="@string/title_jump_and_blink" />
+        <activity
+            android:name=".videoplayer.VideoPlayerActivity"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:excludeFromRecents="true"
+            android:label="@string/video_player_title"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true" />
     </application>
 
 </manifest>
