@@ -7,7 +7,7 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -29,7 +29,8 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,6 +40,10 @@
                     android:host="java-lang-programming"
                     android:scheme="android-app-google-plus-demo" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".search.SearchActivity"
@@ -101,8 +106,58 @@
         <activity
             android:name=".materialdesign.MaterialDesignDetailActivity"
             android:label="@string/material_design_detail" />
-        <activity android:name=".room.RoomDatabaseActivity"
-            android:label="@string/room_contacts"/>
+        <activity
+            android:name=".room.RoomDatabaseActivity"
+            android:label="@string/room_contacts" />
+        <activity
+            android:name=".animations.AnimationsActivity"
+            android:label="@string/animations_title" />
+        <activity
+            android:name=".animations.activities.AccelerateRocketAnimationActivity"
+            android:label="@string/title_accelerate_rocket" />
+        <activity
+            android:name=".animations.activities.ColorAnimationActivity"
+            android:label="@string/title_color_animation" />
+        <activity
+            android:name=".animations.activities.FlyThereAndBackAnimationActivity"
+            android:label="@string/title_there_and_back" />
+        <activity
+            android:name=".animations.activities.FlyWithDogeAnimationActivity"
+            android:label="@string/title_with_doge" />
+        <activity
+            android:name=".animations.activities.LaunchAndSpinAnimatorSetAnimationActivity"
+            android:label="@string/launch_spin" />
+        <activity
+            android:name=".animations.activities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
+            android:label="@string/launch_spin_viewpropertyanimator" />
+        <activity
+            android:name=".animations.activities.LaunchRocketObjectAnimatorAnimationActivity"
+            android:label="@string/title_launch_rocket_objectanimator" />
+        <activity
+            android:name=".animations.activities.LaunchRocketValueAnimatorAnimationActivity"
+            android:label="@string/title_launch_rocket" />
+        <activity
+            android:name=".animations.activities.RotateRocketAnimationActivity"
+            android:label="@string/title_spin_rocket" />
+        <activity
+            android:name=".animations.activities.WithListenerAnimationActivity"
+            android:label="@string/title_animation_events" />
+        <activity
+            android:name=".animations.activities.XmlAnimationActivity"
+            android:label="@string/title_jump_and_blink" />
+        <activity
+            android:name=".videoplayer.VideoPlayerActivity"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:excludeFromRecents="true"
+            android:label="@string/video_player_title"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:name=".tabbar.TabbarActivity"
+            android:label="@string/title_activity_tabbar"></activity>
     </application>
 
 </manifest>

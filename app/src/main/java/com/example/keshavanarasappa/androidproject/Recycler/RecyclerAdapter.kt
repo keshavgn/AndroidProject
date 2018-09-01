@@ -1,5 +1,5 @@
 package com.example.keshavanarasappa.androidproject.recycler
-//import javax.swing.text.StyleConstants.getBackground
+
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.RecyclerView
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.keshavanarasappa.androidproject.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.recyclerview_item_row.*
 
 
 /**
@@ -35,15 +36,14 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
         return photoHolder
     }
 
-    class PhotoHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class PhotoHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), View.OnClickListener, LayoutContainer {
         var recyclerOnClickListener: RecyclerOnClickListener? = null
-        private var view: View = v
         private var photo: Photo? = null
 
         init {
-            v.setOnClickListener(this)
-            v.setBackgroundResource(R.drawable.corner_shape)
-            val drawable = v.background as GradientDrawable
+            containerView.setOnClickListener(this)
+            containerView.setBackgroundResource(R.drawable.corner_shape)
+            val drawable = containerView.background as GradientDrawable
             drawable.setStroke(1, Color.GRAY)
         }
 
@@ -53,9 +53,9 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
 
         fun bindPhoto(photo: Photo) {
             this.photo = photo
-            Picasso.with(view.context).load(photo.url).into(view.itemImage)
-            view.itemDate.text = photo.humanDate
-            view.itemDescription.text = photo.explanation
+            Picasso.with(recyclerItem.context).load(photo.url).into(itemImage)
+            itemDate.text = photo.humanDate
+            itemDescription.text = photo.explanation
         }
     }
 }

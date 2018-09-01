@@ -16,14 +16,17 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.adaptivelayout.AdaptiveLayoutActivity
+import com.example.keshavanarasappa.androidproject.animations.AnimationsActivity
 import com.example.keshavanarasappa.androidproject.maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
 import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
+import com.example.keshavanarasappa.androidproject.tabbar.TabbarActivity
 import com.example.keshavanarasappa.androidproject.user.LoginActivity
 import com.example.keshavanarasappa.androidproject.user.RealmManager
+import com.example.keshavanarasappa.androidproject.videoplayer.VideoPlayerActivity
 import com.example.keshavanarasappa.androidproject.viewpager.ViewPagerActivity
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
@@ -101,6 +104,15 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             }
             7 -> {
                 intent = Intent(this, RoomDatabaseActivity::class.java)
+            }
+            8 -> {
+                intent = Intent(this, AnimationsActivity::class.java)
+            }
+            9 -> {
+                intent = Intent(this, VideoPlayerActivity::class.java)
+            }
+            10 -> {
+                intent = Intent(this, TabbarActivity::class.java)
             }
         }
         startActivity(intent)

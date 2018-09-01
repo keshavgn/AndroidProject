@@ -45,4 +45,37 @@
     <string name="city">City</string>
     <string name="save_button">Save</string>
 
+    <string name="maps_shortcut_short_label">Maps</string>
+    <string name="maps_shortcut_long_label">Maps</string>
+    <string name="maps_disabled_message">Maps</string>
+    <string name="recycler_shortcut_short_label">Recycler</string>
+    <string name="recycler_shortcut_long_label">Recycler</string>
+    <string name="recycler_disabled_message">Recycler</string>
+
+    <string name="animations_title">Animations</string>
+    <string name="title_launch_rocket">Launch a rocket</string>
+    <string name="title_spin_rocket">Spin a rocket</string>
+    <string name="title_accelerate_rocket">Accelerate a rocket</string>
+    <string name="title_launch_rocket_objectanimator">Launch a rocket (ObjectAnimator)</string>
+    <string name="launch_spin">Launch and spin (AnimatorSet)</string>
+    <string name="launch_spin_viewpropertyanimator">Launch and spin (ViewPropertyAnimator)</string>
+    <string name="title_with_doge">Don\'t leave Doge behind (Animating two objects)</string>
+    <string name="title_animation_events">Animation events (with listener)</string>
+    <string name="title_there_and_back">Fly there and back (Animation options)</string>
+    <string name="title_jump_and_blink">Jump and blink (Animations in XML)</string>
+    <string name="title_color_animation">Background color</string>
+
+    <string name="msg_playback_ended">playback ended</string>
+    <string name="msg_playback_started">playback started</string>
+    <string name="msg_playback_paused">playback paused</string>
+    <string name="video_player_title">Video Player</string>
+    <string name="title_activity_tabbar">TabbarActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="first_tab_fragment">Hello first tab fragment</string>
+    <string name="second_tab_fragment">Hello second tab fragment</string>
+    <string name="third_tab_fragment">Hello third tab fragment</string>
+
+
 </resources>

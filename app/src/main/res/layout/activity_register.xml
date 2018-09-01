@@ -4,74 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.keshavanarasappa.androidproject.user.RegisterActivity">
+    tools:context="com.example.keshavanarasappa.androidproject.user.RegisterActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/round_corners_background_green"
         android:fontFamily="serif"
         android:text="@string/register"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:background="@drawable/round_corners_background_green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
 
     <TextView
         android:id="@+id/emailIdTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="94dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="45dp"
         android:text="@string/email_id"
+        app:layout_constraintEnd_toStartOf="@+id/emailIdEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/emailIdEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="24dp"
+        android:hint="@string/email_id"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/emailIdTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emailIdTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/passwrodTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
         android:text="@string/password"
+        app:layout_constraintEnd_toEndOf="@+id/emailIdTextView"
         app:layout_constraintStart_toStartOf="@+id/emailIdTextView"
         app:layout_constraintTop_toBottomOf="@+id/emailIdTextView" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:hint="@string/password"
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/passwrodTextView"
+        app:layout_constraintEnd_toEndOf="@+id/emailIdEditText"
+        app:layout_constraintStart_toStartOf="@+id/emailIdEditText"
+        app:layout_constraintTop_toBottomOf="@+id/emailIdEditText" />
 
     <TextView
         android:id="@+id/sexTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
         android:text="Sex:"
+        app:layout_constraintEnd_toEndOf="@+id/passwrodTextView"
         app:layout_constraintStart_toStartOf="@+id/passwrodTextView"
         app:layout_constraintTop_toBottomOf="@+id/passwrodTextView" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/radioGroup"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_width="213dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/sexTextView"
         app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
-        app:layout_constraintStart_toStartOf="@+id/passwordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText">
+        app:layout_constraintStart_toStartOf="@+id/passwordEditText">
 
         <RadioButton
             android:id="@+id/maleRadioButton"
@@ -92,64 +119,68 @@
         android:id="@+id/statusButton"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="29dp"
         android:text="ToggleButton"
         android:textOff="No"
         android:textOn="Yes"
-        app:layout_constraintStart_toEndOf="@+id/statusTextView"
-        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
-        app:layout_constraintStart_toStartOf="@+id/nameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
         android:id="@+id/dummy"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:editable="false"
         android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/sexTextView" />
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/dateEditText"
+        app:layout_constraintEnd_toEndOf="@+id/dateEditText"
+        app:layout_constraintStart_toStartOf="@+id/dateEditText"
+        app:layout_constraintTop_toTopOf="@+id/dateEditText" />
 
     <TextView
         android:id="@+id/dateEditText"
-        android:layout_width="0dp"
+        android:layout_width="213dp"
         android:layout_height="41dp"
-        android:layout_marginTop="12dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="date"
+        android:paddingLeft="5dp"
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/statusButton" />
 
     <TextView
         android:id="@+id/dobTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
         android:text="DOB:"
-        app:layout_constraintStart_toStartOf="@+id/sexTextView"
-        app:layout_constraintTop_toBottomOf="@+id/sexTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/dateEditText"
+        app:layout_constraintEnd_toEndOf="@+id/statusTextView"
+        app:layout_constraintStart_toStartOf="@+id/statusTextView"
+        app:layout_constraintTop_toBottomOf="@+id/statusTextView" />
 
     <TextView
         android:id="@+id/statusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="32dp"
         android:text="Married:"
-        app:layout_constraintStart_toStartOf="@+id/dobTextView"
-        app:layout_constraintTop_toBottomOf="@+id/dobTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/statusButton"
+        app:layout_constraintEnd_toEndOf="@+id/sexTextView"
+        app:layout_constraintStart_toStartOf="@+id/sexTextView"
+        app:layout_constraintTop_toBottomOf="@+id/sexTextView" />
+
 
 </android.support.constraint.ConstraintLayout>

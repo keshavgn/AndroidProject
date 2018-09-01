@@ -50,11 +50,11 @@ class RegisterActivity : BaseActivity() {
             } else {
                 realm?.executeTransaction {
                     val user = realm.createObject(User::class.java, emailIdEditText.text.toString())
-                    user.emailId = emailIdEditText.text.toString()
                     user.password = passwordEditText.text.toString()
                     user.dob = dateEditText.text.toString()
                     user.sex = if (maleSelected() == true) MALE else FEMALE
                     user.status = statusButton.isChecked
+//                    saveCredentials(username = user.emailId, password = user.password)
                     finish()
                 }
             }
@@ -71,6 +71,7 @@ class RegisterActivity : BaseActivity() {
     private fun maleSelected(): Boolean {
         return radioGroup.checkedRadioButtonId == R.id.maleRadioButton
     }
+
 
     companion object {
         private const val DATE_FORMAT = "dd.MM.yyyy"

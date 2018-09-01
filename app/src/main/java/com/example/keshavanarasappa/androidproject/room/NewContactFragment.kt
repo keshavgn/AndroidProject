@@ -29,7 +29,7 @@ class NewContactFragment : DialogFragment() {
         errorTextView.visibility = View.INVISIBLE
 
         saveButton.setOnClickListener {
-            var error: String = " "
+            var error = " "
             if (nameEditText.text.length < 4) {
                 error = "Name should be minimum 4 characters"
             } else if (phoneNoEditText.text.length != 10) {
