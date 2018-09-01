@@ -157,7 +157,8 @@
             android:supportsPictureInPicture="true" />
         <activity
             android:name=".tabbar.TabbarActivity"
-            android:label="@string/title_activity_tabbar"></activity>
+            android:label="@string/title_activity_tabbar" />
+        <activity android:name=".bottomnavbar.BottomNavbarActivity"></activity>
     </application>
 
 </manifest>

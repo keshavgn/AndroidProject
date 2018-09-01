@@ -13,7 +13,7 @@ import com.example.keshavanarasappa.androidproject.R
 class MainActivityAdapter internal constructor(private val inflater: LayoutInflater) : BaseAdapter() {
     private val mainList = arrayOf("Search", "Recyler View", "Adaptive UI", "ViewPager, Tab & Fragment",
             "Maps", "ML Kit with Firebase", "Material Design", "Room database, View data binding", "Animations",
-            "Video Player, PIP, MediaSession, Audio Focus", "Tab bar")
+            "Video Player, PIP, MediaSession, Audio Focus", "Tab bar", "Bottom Navigation bar")
 
     init {
     }

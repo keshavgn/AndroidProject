@@ -78,4 +78,7 @@
     <string name="third_tab_fragment">Hello third tab fragment</string>
 
 
+    <string name="title_shop">Shop</string>
+    <string name="title_cart">Cart</string>
+
 </resources>
