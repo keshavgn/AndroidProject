@@ -13,7 +13,7 @@ import com.example.keshavanarasappa.androidproject.R
 class MainActivityAdapter internal constructor(private val inflater: LayoutInflater) : BaseAdapter() {
     private val mainList = arrayOf("Search", "Recyler View", "Adaptive UI", "ViewPager, Tab & Fragment",
             "Maps", "ML Kit with Firebase", "Material Design", "Room database, View data binding", "Animations",
-            "Video Player, PIP, MediaSession, Audio Focus")
+            "Video Player, PIP, MediaSession, Audio Focus", "Tab bar")
 
     init {
     }
@@ -32,7 +32,7 @@ class MainActivityAdapter internal constructor(private val inflater: LayoutInfla
             item = inflater.inflate(R.layout.row_main, parent, false)
 
             holder = ViewHolder()
-            holder.titleTextView = item?.findViewById<TextView>(R.id.text_title)
+            holder.titleTextView = item?.findViewById(R.id.text_title)
 
             item.tag = holder
         } else {

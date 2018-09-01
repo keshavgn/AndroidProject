@@ -73,4 +73,9 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="first_tab_fragment">Hello first tab fragment</string>
+    <string name="second_tab_fragment">Hello second tab fragment</string>
+    <string name="third_tab_fragment">Hello third tab fragment</string>
+
+
 </resources>

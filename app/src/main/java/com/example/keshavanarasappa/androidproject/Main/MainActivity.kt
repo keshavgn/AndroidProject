@@ -23,6 +23,7 @@ import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActiv
 import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
+import com.example.keshavanarasappa.androidproject.tabbar.TabbarActivity
 import com.example.keshavanarasappa.androidproject.user.LoginActivity
 import com.example.keshavanarasappa.androidproject.user.RealmManager
 import com.example.keshavanarasappa.androidproject.videoplayer.VideoPlayerActivity
@@ -109,6 +110,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             }
             9 -> {
                 intent = Intent(this, VideoPlayerActivity::class.java)
+            }
+            10 -> {
+                intent = Intent(this, TabbarActivity::class.java)
             }
         }
         startActivity(intent)

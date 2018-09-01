@@ -155,6 +155,9 @@
             android:noHistory="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true" />
+        <activity
+            android:name=".tabbar.TabbarActivity"
+            android:label="@string/title_activity_tabbar"></activity>
     </application>
 
 </manifest>

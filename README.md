@@ -39,3 +39,6 @@ Room database
 
 Animations
 - Value, Object and Property animations with Animation sets
+
+Tabbar
+- Implemented Tabbar with ViewPager & custom Fragments
