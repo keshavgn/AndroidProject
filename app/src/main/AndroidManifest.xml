@@ -3,7 +3,8 @@
     package="com.example.keshavanarasappa.androidproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -145,8 +146,7 @@
         <activity
             android:name=".animations.activities.XmlAnimationActivity"
             android:label="@string/title_jump_and_blink" />
-        <activity
-            android:name=".videoplayer.VideoPlayerActivity"
+        <activity android:name=".videoplayer.VideoPlayerActivity"
             android:autoRemoveFromRecents="true"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
@@ -155,10 +155,10 @@
             android:noHistory="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true" />
-        <activity
-            android:name=".tabbar.TabbarActivity"
+        <activity android:name=".tabbar.TabbarActivity"
             android:label="@string/title_activity_tabbar" />
-        <activity android:name=".bottomnavbar.BottomNavbarActivity"></activity>
+        <activity android:name=".bottomnavbar.BottomNavbarActivity"
+            android:label="@string/photo_filters" />
     </application>
 
 </manifest>

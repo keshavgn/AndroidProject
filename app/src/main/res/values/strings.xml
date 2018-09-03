@@ -78,7 +78,20 @@
     <string name="third_tab_fragment">Hello third tab fragment</string>
 
 
-    <string name="title_shop">Shop</string>
-    <string name="title_cart">Cart</string>
+    <string name="photo_filters">Photo Filters</string>
+    <string name="title_filters">Filters</string>
+    <string name="title_edit">Edit</string>
+    <string name="activity_title_main">Filters</string>
+    <string name="filters">FILTERS</string>
+    <string name="edit">EDIT</string>
+    <string name="lbl_brightness">BRIGHTNESS</string>
+    <string name="lbl_contrast">CONTRAST</string>
+    <string name="lbl_saturation">SATURATION</string>
+    <string name="tab_filters">FILTERS</string>
+    <string name="tab_edit">EDIT</string>
+    <string name="roboto_medium">sans-serif-medium</string>
+    <string name="filter_normal">Normal</string>
+    <string name="action_save">SAVE</string>
+    <string name="action_open">OPEN</string>
 
 </resources>

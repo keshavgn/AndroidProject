@@ -30,5 +30,8 @@
   <color name="background_to">#CB16C8</color>
 
   <color name="bgBottomNavigation">#fe485a</color>
+  <color name="color_option_menu">#FF3990</color>
+  <color name="filter_label_normal">#8A8889</color>
+  <color name="filter_label_selected">#221F20</color>
 
 </resources>
