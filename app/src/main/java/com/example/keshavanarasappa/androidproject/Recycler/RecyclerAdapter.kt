@@ -54,7 +54,7 @@ class RecyclerAdapter(private val photos: ArrayList<Photo>) : RecyclerView.Adapt
         fun bindPhoto(photo: Photo) {
             this.photo = photo
             Picasso.with(recyclerItem.context).load(photo.url).into(itemImage)
-            itemDate.text = photo.humanDate
+            itemDate.text = photo.humanDate()
             itemDescription.text = photo.explanation
         }
     }

@@ -7,6 +7,7 @@ import android.app.Activity
 import android.content.Context
 import android.net.Uri.Builder
 import com.example.keshavanarasappa.androidproject.R
+import com.google.gson.Gson
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -64,7 +65,7 @@ class ImageRequester(listeningActivity: Activity) {
                     calendar.add(Calendar.DAY_OF_YEAR, -1)
 
                     if (photoJSON.getString(MEDIA_TYPE_KEY) != MEDIA_TYPE_VIDEO_VALUE) {
-                        val receivedPhoto = Photo(photoJSON)
+                        val receivedPhoto = Gson().fromJson(photoJSON.toString(), Photo::class.java)
                         responseListener.receivedNewPhoto(receivedPhoto)
                         if (photosCount == 0) {
                             isLoadingData = false

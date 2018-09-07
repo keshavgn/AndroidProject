@@ -105,7 +105,7 @@ class SearchActivity: BaseActivity(), View.OnClickListener, AdapterView.OnItemCl
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
-        val coverID = jsonAdapterGrid.getItem(position).optString(COVER_I, "")
+        val coverID = jsonAdapterGrid.getItem(position).coverId
 
         val detailIntent = Intent(this, DetailActivity::class.java)
 
