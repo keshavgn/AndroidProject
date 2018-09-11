@@ -22,7 +22,7 @@ class ImageRequester(listeningActivity: Activity) {
     }
 
     private val calendar = Calendar.getInstance()
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private val responseListener: ImageRequesterResponse
     private val context: Context
     private val client: OkHttpClient

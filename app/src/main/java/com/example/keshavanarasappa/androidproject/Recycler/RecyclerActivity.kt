@@ -14,6 +14,7 @@ import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_recyler.*
 import kotlinx.android.synthetic.main.progress_bar.*
+import org.jetbrains.anko.support.v4.onRefresh
 import java.io.IOException
 
 /**
@@ -57,6 +58,10 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
         val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
         changeLayoutManager(index)
+
+        swipeRefresh.onRefresh {
+            requestPhoto()
+        }
     }
 
     override fun onStart() {
@@ -86,6 +91,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
             adapter.notifyDataSetChanged()
+            swipeRefresh.isRefreshing = true
         }
     }
 

@@ -244,12 +244,12 @@ class BottomNavbarActivity : BaseActivity(), FiltersListFragment.FiltersListFrag
             when (item.itemId) {
                 R.id.navigation_filters -> {
                     viewPager.currentItem = 0
-                    navigation.backgroundColor = resources.getColor(R.color.bgBottomNavigation)
+//                    navigation.backgroundColor = resources.getColor(R.color.bgBottomNavigation)
                     return true
                 }
                 R.id.navigation_edit -> {
                     viewPager.currentItem = 1
-                    navigation.backgroundColor = resources.getColor(R.color.green)
+//                    navigation.backgroundColor = resources.getColor(R.color.green)
                     return true
                 }
             }
