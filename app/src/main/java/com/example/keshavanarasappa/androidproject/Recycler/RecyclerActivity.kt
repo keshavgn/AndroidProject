@@ -20,7 +20,7 @@ import java.io.IOException
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
-class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
+class RecyclerActivity : BaseActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
 
     private lateinit var imageRequester: ImageRequester
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -91,7 +91,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
             adapter.notifyDataSetChanged()
-            swipeRefresh.isRefreshing = true
+            swipeRefresh.isRefreshing = false
         }
     }
 
@@ -168,6 +168,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
         } else {
             recyclerView.layoutManager = linearLayoutManager
         }
+        adapter.columns = index
 
         //if layout is changed, save the index to sharePreferences to show the same layout when enter again
         if (recyclerView.layoutManager != layoutManager) {

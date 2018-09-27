@@ -11,6 +11,7 @@
         android:layout_height="90dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/recycler_shortcut_short_label"
         android:adjustViewBounds="true"/>
 
     <TextView
@@ -26,7 +27,7 @@
     <TextView
         android:id="@+id/itemDate"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center|start"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
