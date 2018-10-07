@@ -8,11 +8,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_material_design.*
+import kotlinx.android.synthetic.main.activity_material_design_detail.*
 
 class MaterialDesignActivity : BaseActivity() {
     private lateinit var staggeredLayoutManager: StaggeredGridLayoutManager
@@ -23,9 +22,6 @@ class MaterialDesignActivity : BaseActivity() {
     private val onItemClickListener = object : MaterialDesignAdapter.OnItemClickListener {
         override fun onItemClick(view: View, position: Int) {
             val intent = MaterialDesignDetailActivity.newIntent(this@MaterialDesignActivity, position)
-
-            val placeImage = view.findViewById<ImageView>(R.id.placeImage)
-            val placeNameHolder = view.findViewById<LinearLayout>(R.id.placeNameHolder)
 
             val imagePair = Pair(placeImage as View, "tImage")
             val holderPair = Pair(placeNameHolder as View, "tNameHolder")
