@@ -21,6 +21,7 @@ import com.example.keshavanarasappa.androidproject.bottomnavbar.BottomNavbarActi
 import com.example.keshavanarasappa.androidproject.maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
+import com.example.keshavanarasappa.androidproject.motionlayout.MotionLayoutActivity
 import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
@@ -96,6 +97,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             9 -> { intent = Intent(this, VideoPlayerActivity::class.java) }
             10 -> { intent = Intent(this, TabbarActivity::class.java) }
             11 -> { intent = Intent(this, BottomNavbarActivity::class.java) }
+            12 -> { intent = Intent(this, MotionLayoutActivity::class.java) }
         }
         startActivity(intent)
     }
