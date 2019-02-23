@@ -8,32 +8,28 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.keshavanarasappa.androidproject.R
-
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-
 import org.json.JSONArray
-import org.json.JSONObject
+
 /**
  * Created by keshava.narasappa on 24/02/18.
  */
-class JSONAdapter internal constructor(private val context: Context,
-                                       private val inflater: LayoutInflater) : BaseAdapter() {
-    var jsonArray: JSONArray? = null
-
-    init {
-        jsonArray = JSONArray()
-    }
+class JSONAdapter internal constructor(private val context: Context, private val inflater: LayoutInflater) : BaseAdapter() {
+    private var searchResults = arrayListOf<SearchItem>()
 
     internal fun updateData(jsonArray: JSONArray) {
-
-        // update the adapter's dataset
-        this.jsonArray = jsonArray
+        for (index in 0 until jsonArray.length() - 1) {
+            val json = jsonArray.getJSONObject(index)
+            val item = Gson().fromJson(json.toString(), SearchItem::class.java)
+            searchResults.add(item)
+        }
         notifyDataSetChanged()
     }
 
-    override fun getCount(): Int = jsonArray?.length() ?: 0
+    override fun getCount(): Int = searchResults.count()
 
-    override fun getItem(position: Int): JSONObject = jsonArray?.optJSONObject(position) ?: JSONObject()
+    override fun getItem(position: Int): SearchItem = searchResults[position]
 
     override fun getItemId(position: Int) = position.toLong()
 
@@ -51,12 +47,9 @@ class JSONAdapter internal constructor(private val context: Context,
 
             // create a new "Holder" with subviews
             holder = ViewHolder()
-            holder.thumbnailImageView = convertView!!
-                    .findViewById<View>(R.id.img_thumbnail) as ImageView
-            holder.titleTextView = convertView
-                    .findViewById<View>(R.id.text_title) as TextView
-            holder.authorTextView = convertView
-                    .findViewById<View>(R.id.text_author) as TextView
+            holder.thumbnailImageView = convertView!!.findViewById<View>(R.id.img_thumbnail) as ImageView
+            holder.titleTextView = convertView.findViewById<View>(R.id.text_title) as TextView
+            holder.authorTextView = convertView.findViewById<View>(R.id.text_author) as TextView
 
             // hang onto this holder for future recyclage
             convertView.tag = holder
@@ -68,16 +61,12 @@ class JSONAdapter internal constructor(private val context: Context,
         }
 
         // Get the current book's data in JSON form
-        val jsonObject = getItem(position)
+        val item = getItem(position)
 
         // See if there is a cover ID in the Object
-        if (jsonObject.has(COVER_I)) {
-
-            // If so, grab the Cover ID out from the object
-            val imageID = jsonObject.optString(COVER_I)
-
+        if (item.coverId != null) {
             // Construct the image URL (specific to API)
-            val imageURL = (IMAGE_URL_BASE + imageID + IMAGE_URL_EXT)
+            val imageURL = (IMAGE_URL_BASE + item.coverId + IMAGE_URL_EXT)
 
             // Use Picasso to load the image
             // Temporarily have a placeholder in case it's slow to load
@@ -86,27 +75,13 @@ class JSONAdapter internal constructor(private val context: Context,
                     .placeholder(R.drawable.ic_books)
                     .into(holder.thumbnailImageView)
         } else {
-
             // If there is no cover ID in the object, use a placeholder
             holder.thumbnailImageView?.setImageResource(R.drawable.ic_books)
         }
 
-        // Grab the title and author from the JSON
-        var bookTitle = ""
-        var authorName = ""
-
-        if (jsonObject.has(TITLE)) {
-            bookTitle = jsonObject.optString(TITLE)
-        }
-
-        if (jsonObject.has(AUTHOR_NAME)) {
-            authorName = jsonObject.optJSONArray(AUTHOR_NAME)
-                    .optString(0)
-        }
-
         // Send these Strings to the TextViews for display
-        holder.titleTextView?.text = bookTitle
-        holder.authorTextView?.text = authorName
+        holder.titleTextView?.text = item.title
+        holder.authorTextView?.text = item.authorNames.first()
 
         return convertView
     }
@@ -122,9 +97,6 @@ class JSONAdapter internal constructor(private val context: Context,
     companion object {
         private const val IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/"
         private const val IMAGE_URL_EXT = "-S.jpg"
-        private const val AUTHOR_NAME = "author_name"
-        private const val TITLE = "title"
-        private const val COVER_I = "cover_i"
     }
 }
 

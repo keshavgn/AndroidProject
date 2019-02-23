@@ -45,7 +45,7 @@ class MaterialDesignAdapter(private var context: Context) : RecyclerView.Adapter
 
         val photo = BitmapFactory.decodeResource(context.resources, place.getImageResourceId(context))
         Palette.from(photo).generate { palette ->
-            val bgColor = palette.getMutedColor(ContextCompat.getColor(context, android.R.color.black))
+            val bgColor = palette!!.getMutedColor(ContextCompat.getColor(context, android.R.color.black))
             holder.itemView.placeNameHolder.setBackgroundColor(bgColor)
         }
     }

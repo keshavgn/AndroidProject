@@ -7,13 +7,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         def uniqueAppId = "androidprojectkeshav"
 
         applicationId "com.example.keshavanarasappa.androidproject"
         minSdkVersion 26
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,17 +39,19 @@ androidExtensions {
 
 ext {
     room_version = "1.1.1"
-    support_version = "27.1.1"
+    support_version = "28.0.0"
     exoplayer_version = "2.7.0"
     anko_version = "0.10.4"
+    play_services_version = "16.0.1"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:support-v13:$support_version"
     implementation "com.android.support:cardview-v7:$support_version"
     implementation "com.android.support:palette-v7:$support_version"
-    implementation "com.android.support.constraint:constraint-layout:1.1.2"
+    implementation "com.android.support.constraint:constraint-layout:2.0.0-alpha2"
     implementation "com.android.support:design:$support_version"
     implementation "com.android.support:recyclerview-v7:$support_version"
     implementation "com.android.support:support-v4:$support_version"
@@ -63,7 +65,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-ml-vision:16.0.0'
 
-    implementation 'com.android.support:support-v13:27.1.1'
     testImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'com.loopj.android:android-async-http:1.4.4'
     implementation 'com.squareup.picasso:picasso:2.5.2'
@@ -75,8 +76,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.anko:anko:$anko_version"
 
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
-    annotationProcessor 'dk.ilios:realmfieldnameshelper:1.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    kapt 'dk.ilios:realmfieldnameshelper:1.1.1'
     implementation 'io.realm:android-adapters:2.1.0'
     implementation 'com.nshmura:recyclertablayout:1.5.0'
 
@@ -91,6 +92,11 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
     implementation "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
+
+    implementation 'info.androidhive:imagefilters:1.0.7'
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation'com.romandanylyk:pageindicatorview:1.0.2'
 }
 
 repositories {

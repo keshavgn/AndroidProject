@@ -30,7 +30,7 @@ object MovieHelper {
                 val movieOverview = jsonMovies.getJSONObject(index).getString(KEY_OVERVIEW)
                 movies.add(Movie(movieTitle, movieRating, moviePosterUri, movieOverview))
             }
-        } catch (e: JSONException) {
+        } catch (e: Throwable) {
             return movies
         }
         return movies

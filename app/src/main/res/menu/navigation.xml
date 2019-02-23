@@ -1,0 +1,14 @@
+<!-- Defines the menu item that will appear on the Action Bar in MainActivity -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:id="@+id/navigation_filters"
+      android:icon="@drawable/ic_filters_white_45dp"
+      android:title="@string/title_filters" />
+
+  <item
+      android:id="@+id/navigation_edit"
+      android:icon="@drawable/ic_edit_white_45dp"
+      android:title="@string/title_edit" />
+
+</menu>

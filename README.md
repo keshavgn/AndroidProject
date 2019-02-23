@@ -42,3 +42,6 @@ Animations
 
 Tabbar
 - Implemented Tabbar with ViewPager & custom Fragments
+
+BottomNavigationBar, Photo Editing
+- Implemented Bottom navigation bar, photo editing

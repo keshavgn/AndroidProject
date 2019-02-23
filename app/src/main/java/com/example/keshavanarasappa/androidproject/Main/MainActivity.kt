@@ -17,9 +17,11 @@ import android.widget.AdapterView
 import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.adaptivelayout.AdaptiveLayoutActivity
 import com.example.keshavanarasappa.androidproject.animations.AnimationsActivity
+import com.example.keshavanarasappa.androidproject.bottomnavbar.BottomNavbarActivity
 import com.example.keshavanarasappa.androidproject.maps.MapsActivity
 import com.example.keshavanarasappa.androidproject.materialdesign.MaterialDesignActivity
 import com.example.keshavanarasappa.androidproject.mlfirebase.MLKitFirebaseActivity
+import com.example.keshavanarasappa.androidproject.motionlayout.MotionLayoutActivity
 import com.example.keshavanarasappa.androidproject.recycler.RecyclerActivity
 import com.example.keshavanarasappa.androidproject.room.RoomDatabaseActivity
 import com.example.keshavanarasappa.androidproject.search.SearchActivity
@@ -79,41 +81,23 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         var intent = Intent()
         when(position) {
-            0 -> {
-                intent = Intent(this, SearchActivity::class.java)
-            }
+            0 -> { intent = Intent(this, SearchActivity::class.java) }
             1 -> {
                 val recyclerIntent = Intent(this, RecyclerActivity::class.java)
                 recyclerIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
                 intent = recyclerIntent
             }
-            2 -> {
-                intent = Intent(this, AdaptiveLayoutActivity::class.java)
-            }
-            3 -> {
-                intent = Intent(this, ViewPagerActivity::class.java)
-            }
-            4 -> {
-                intent = Intent(this, MapsActivity::class.java)
-            }
-            5 -> {
-                intent = Intent(this, MLKitFirebaseActivity::class.java)
-            }
-            6 -> {
-                intent = Intent(this, MaterialDesignActivity::class.java)
-            }
-            7 -> {
-                intent = Intent(this, RoomDatabaseActivity::class.java)
-            }
-            8 -> {
-                intent = Intent(this, AnimationsActivity::class.java)
-            }
-            9 -> {
-                intent = Intent(this, VideoPlayerActivity::class.java)
-            }
-            10 -> {
-                intent = Intent(this, TabbarActivity::class.java)
-            }
+            2 -> { intent = Intent(this, AdaptiveLayoutActivity::class.java) }
+            3 -> { intent = Intent(this, ViewPagerActivity::class.java) }
+            4 -> { intent = Intent(this, MapsActivity::class.java) }
+            5 -> { intent = Intent(this, MLKitFirebaseActivity::class.java) }
+            6 -> { intent = Intent(this, MaterialDesignActivity::class.java) }
+            7 -> { intent = Intent(this, RoomDatabaseActivity::class.java) }
+            8 -> { intent = Intent(this, AnimationsActivity::class.java) }
+            9 -> { intent = Intent(this, VideoPlayerActivity::class.java) }
+            10 -> { intent = Intent(this, TabbarActivity::class.java) }
+            11 -> { intent = Intent(this, BottomNavbarActivity::class.java) }
+            12 -> { intent = Intent(this, MotionLayoutActivity::class.java) }
         }
         startActivity(intent)
     }

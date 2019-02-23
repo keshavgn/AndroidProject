@@ -14,12 +14,13 @@ import com.example.keshavanarasappa.androidproject.R
 import com.example.keshavanarasappa.androidproject.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_recyler.*
 import kotlinx.android.synthetic.main.progress_bar.*
+import org.jetbrains.anko.support.v4.onRefresh
 import java.io.IOException
 
 /**
  * Created by keshava.narasappa on 03/03/18.
  */
-class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
+class RecyclerActivity : BaseActivity(), ImageRequester.ImageRequesterResponse, RecyclerAdapter.RecyclerOnClickListener {
 
     private lateinit var imageRequester: ImageRequester
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -57,6 +58,10 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
         val index = this.getPreferences(Context.MODE_PRIVATE).getInt(getString(R.string.layout_index), 1)
         changeLayoutManager(index)
+
+        swipeRefresh.onRefresh {
+            requestPhoto()
+        }
     }
 
     override fun onStart() {
@@ -86,6 +91,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             viewModel.addPhotoToList(newPhoto)
             adapter.notifyItemInserted(viewModel.numberOfPhotos())
             adapter.notifyDataSetChanged()
+            swipeRefresh.isRefreshing = false
         }
     }
 
@@ -98,9 +104,9 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
 
     private fun setRecyclerViewScrollListener() {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                val totalItemCount = recyclerView?.layoutManager?.itemCount
+                val totalItemCount = recyclerView.layoutManager?.itemCount
                 if (!imageRequester.isLoadingData && totalItemCount == lastVisibleItemPosition + 1) {
                     imageRequester.photosCount = 20
                     requestPhoto()
@@ -119,7 +125,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 val position = viewHolder.adapterPosition
                 viewModel.removePhotoAt(position)
-                recyclerView.adapter.notifyItemRemoved(position)
+                recyclerView.adapter?.notifyItemRemoved(position)
             }
         }
 
@@ -162,6 +168,7 @@ class RecyclerActivity: BaseActivity(), ImageRequester.ImageRequesterResponse, R
         } else {
             recyclerView.layoutManager = linearLayoutManager
         }
+        adapter.columns = index
 
         //if layout is changed, save the index to sharePreferences to show the same layout when enter again
         if (recyclerView.layoutManager != layoutManager) {

@@ -2,7 +2,7 @@
 <resources>
   <color name="colorPrimary">#3F51B5</color>
   <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="colorAccent">#ff4081</color>
 
   <color name="black_overlay">#66000000</color>
   <color name="color_primary">#9B26AF</color>
@@ -28,5 +28,10 @@
 
   <color name="background_from">#2F312E</color>
   <color name="background_to">#CB16C8</color>
+
+  <color name="bgBottomNavigation">#fe485a</color>
+  <color name="color_option_menu">#FF3990</color>
+  <color name="filter_label_normal">#8A8889</color>
+  <color name="filter_label_selected">#221F20</color>
 
 </resources>
